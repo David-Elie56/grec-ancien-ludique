@@ -515,6 +515,8 @@ function settingsScreenHTML(err){
     <div class="sub">Colle ici l'URL de ton application Google Apps Script (voir les instructions de déploiement fournies avec ce fichier).</div>
     <label>URL de l'application web</label>
     <input type="text" id="gasUrlInput" placeholder="https://script.google.com/macros/s/…/exec">
+    <button class="btn-ghost" style="width:100%;margin-top:10px;" onclick="testGasConnection()">Tester la connexion</button>
+    <div class="errmsg" id="gasMsg"></div>
     <button class="navbtn" onclick="saveGasUrl()">Enregistrer</button>
     <button class="altlink" onclick="continueAsGuest()">Continuer sans sauvegarde (mode invité)</button>
     <div class="errmsg">${err||''}</div>
@@ -551,6 +553,20 @@ function saveGasUrl(){
   STATE.gasUrl = val;
   renderScreen(loginScreenHTML());
 }
+async function testGasConnection(){
+  const input = document.getElementById('gasUrlInput');
+  const url = (input.value||'').trim();
+  const msg = document.getElementById('gasMsg');
+  if(!url){ msg.style.color='var(--red)'; msg.textContent='Colle une URL avant de tester.'; return; }
+  msg.style.color='var(--text-soft)'; msg.textContent='Test en cours…';
+  try{
+    const res = await fetch(url, {method:'POST', body: JSON.stringify({action:'ping'})});
+    const r = await res.json();
+    if(r && r.ok){ msg.style.color='var(--green)'; msg.textContent='Connexion réussie ✓ — le script répond correctement.'; }
+    else{ msg.style.color='var(--red)'; msg.textContent="Le script répond mais renvoie une erreur : "+((r&&r.error)||'inconnue')+"."; }
+  }catch(e){ msg.style.color='var(--red)'; msg.textContent="Connexion impossible. Vérifie l'URL et le déploiement (accès = Tout le monde)."; }
+}
+window.testGasConnection = testGasConnection;
 function continueAsGuest(){
   STATE.guest = true;
   STATE.user = null;
@@ -590,20 +606,38 @@ window.continueAsGuest = continueAsGuest;
 window.submitLogin = submitLogin;
 window.logout = logout;
 
+function withTimeout_(promise, ms, timeoutMsg){
+  return Promise.race([
+    promise,
+    new Promise(resolve => setTimeout(() => resolve({ ok:false, error: timeoutMsg || 'Délai dépassé.' }), ms))
+  ]);
+}
+
 async function boot(){
   const url = localStorage.getItem('grec_gas_url')||'';
   STATE.gasUrl = url;
-  if(!url){ renderScreen(settingsScreenHTML()); render(); return; }
+  render(); // l'appli est utilisable tout de suite, la connexion se fait en arrière-plan
+  if(!url){ renderScreen(settingsScreenHTML()); return; }
   const savedName = localStorage.getItem('grec_user_name');
   const savedCode = localStorage.getItem('grec_user_code');
-  render();
-  if(savedName && savedCode){
-    renderScreen(loginScreenHTML(savedName, 'Connexion en cours…'));
-    const r = await gasCall('login', {name:savedName, code:savedCode});
-    if(r && r.ok) applyLogin(savedName, savedCode, r);
-    else renderScreen(loginScreenHTML(savedName, (r&&r.error)||'Reconnecte-toi.'));
+  if(!savedName || !savedCode){ renderScreen(loginScreenHTML()); return; }
+
+  STATE.guest = true; // en attendant la réponse, on n'est pas bloqué
+  showToast('Connexion en cours…');
+  const r = await withTimeout_(
+    gasCall('login', {name:savedName, code:savedCode}),
+    10000,
+    'La connexion prend trop de temps — tu peux continuer, ta progression se sauvegardera dès que le serveur répondra.'
+  );
+  if(r && r.ok){
+    STATE.user = {name:savedName, code:savedCode};
+    STATE.guest = false;
+    STATE.points += (r.points||0);
+    (r.completedLessons||[]).forEach(n => STATE.completed.add(Number(n)));
+    refreshTopStats(); renderSidebar();
+    showToast(r.isNew ? 'Compte créé — bienvenue !' : 'Progression restaurée.');
   } else {
-    renderScreen(loginScreenHTML());
+    showToast((r&&r.error) || 'Connexion impossible pour le moment — mode invité.');
   }
 }
 
