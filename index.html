@@ -621,6 +621,349 @@ const LESSONS = [
     {type:'qcm', q:"Dans les Aphorismes d'Hippocrate, τέχνη (ici traduit par « l'art ») désigne surtout…", opts:['la peinture','la médecine, l\'art médical','la guerre','la poésie'], correct:1, explain:"Dans ce contexte, τέχνη renvoie à l'art médical qu'Hippocrate professe."},
     {type:'text', q:"Traduis en un mot : « μηδὲν ἄγαν » conseille de ne rien faire…", accepted:['trop','de trop','en excès'], explain:"μηδὲν ἄγαν = « rien de trop », invitation à la mesure."}
   ]
+},
+{
+  title:"Les pronoms personnels", grTitle:"Αἱ ἀντωνυμίαι",
+  blocks:[
+    {type:'p', text:"Comme la terminaison du verbe indique déjà la personne (λύω = « je délie », sans qu'il soit besoin d'ajouter « je »), le grec n'utilise les pronoms personnels sujets que pour insister. En revanche, aux autres cas (accusatif, génitif, datif), ils sont indispensables comme en français."},
+    {type:'table', caption:"Ἐγώ, σύ, ἡμεῖς, ὑμεῖς — je, tu, nous, vous", headers:['Cas','1sg (je)','2sg (tu)','1pl (nous)','2pl (vous)'],
+     rows:[['Nom.','ἐγώ','σύ','ἡμεῖς','ὑμεῖς'],['Acc.','ἐμέ / με','σέ / σε','ἡμᾶς','ὑμᾶς'],['Gén.','ἐμοῦ / μου','σοῦ / σου','ἡμῶν','ὑμῶν'],['Dat.','ἐμοί / μοι','σοί / σοι','ἡμῖν','ὑμῖν']]},
+    {type:'rule', text:"Chaque pronom (sauf au nominatif) a une forme accentuée, insistante (ἐμοῦ, ἐμοί...) et une forme atone, plus légère (μου, μοι...). Le grec emploie la forme atone par défaut, et réserve la forme accentuée à l'insistance, au début de phrase ou après une préposition."},
+    {type:'p', text:"Il n'existe pas de vrai pronom « il / elle » non réfléchi à la 3e personne : le grec utilise à la place une forme du mot αὐτός, αὐτή, αὐτό, qui se décline comme un adjectif de la 1ère/2e déclinaison."},
+    {type:'example', items:[
+      {gr:'αὐτὸν ὁρῶ', tr:'autòn horỗ', fr:"je le vois (lui)"},
+      {gr:'ἐμαυτὸν οὐ φιλῶ', tr:'emautòn ou philỗ', fr:"je ne m'aime pas (réfléchi : moi-même)"}
+    ]}
+  ],
+  vocab:[
+    {gr:"ἐγώ", tr:"egṓ", fr:"je, moi"},
+    {gr:"σύ", tr:"sú", fr:"tu, toi"},
+    {gr:"ἡμεῖς", tr:"hēmeîs", fr:"nous"},
+    {gr:"ὑμεῖς", tr:"humeîs", fr:"vous"},
+    {gr:"αὐτός, αὐτή, αὐτό", tr:"autós, autḗ, autó", fr:"lui, elle ; le même ; lui-même (selon la position)"},
+    {gr:"ἐμαυτόν", tr:"emautón", fr:"moi-même (réfléchi)"}
+  ],
+  exercises:[
+    {type:'qcm', q:"Le grec exprime le sujet « je » par le seul pronom ἐγώ…", opts:['toujours, comme en français','seulement pour insister','jamais','seulement au pluriel'], correct:1, explain:"La terminaison verbale suffit à indiquer la personne ; le pronom sujet n'apparaît que pour insister."},
+    {type:'qcm', q:"« De moi » (génitif) se dit, en forme atone…", opts:['ἐμοῦ','μου','ἐμοί','ἐμέ'], correct:1, explain:"μου est la forme atone, la plus fréquente."},
+    {type:'qcm', q:"Faute d'un vrai pronom « il » non réfléchi, le grec utilise…", opts:['σύ','ἡμεῖς','une forme de αὐτός','ἐμαυτόν'], correct:2, explain:"αὐτός, αὐτή, αὐτό supplée l'absence de pronom de 3e personne non réfléchi."},
+    {type:'text', q:"Écris « vous » (nominatif pluriel).", accepted:['ὑμεῖς','υμεις'], explain:"ὑμεῖς = vous (2e personne du pluriel)."},
+    {type:'qcm', q:"ἐμαυτόν (« moi-même ») est un pronom…", opts:['personnel non réfléchi','réfléchi','réciproque','possessif'], correct:1, explain:"ἐμαυτόν est le pronom réfléchi de la 1ère personne."}
+  ]
+},
+{
+  title:"Comparatif et superlatif", grTitle:"Ὁ συγκριτικὸς καὶ ὁ ὑπερθετικός",
+  blocks:[
+    {type:'p', text:"Le comparatif (« plus... ») et le superlatif (« le plus... », « très... ») se forment le plus souvent en ajoutant un suffixe au thème de l'adjectif au positif."},
+    {type:'table', caption:'Formation régulière : suffixes -τερος / -τατος', headers:['Positif','Comparatif','Superlatif'],
+     rows:[['σοφός (sage)','σοφώτερος (plus sage)','σοφώτατος (très sage)'],['δίκαιος (juste)','δικαιότερος','δικαιότατος'],['ὀξύς (aigu)','ὀξύτερος','ὀξύτατος']]},
+    {type:'rule', text:"Un certain nombre d'adjectifs très fréquents, souvent des adjectifs de qualité ou de défaut, ont un comparatif et un superlatif <b>irréguliers</b> en <b>-ίων / -ιστος</b> (ou complètement supplétifs, sur un autre radical) — exactement comme « bon, meilleur, le meilleur » en français."},
+    {type:'table', caption:'Quelques comparatifs irréguliers fréquents', headers:['Positif','Comparatif','Superlatif'],
+     rows:[['καλός (beau)','καλλίων (plus beau)','κάλλιστος (le plus beau)'],['κακός (mauvais)','χείρων / ἥττων (pire)','χείριστος (le pire)'],['μέγας (grand)','μείζων (plus grand)','μέγιστος (le plus grand)'],['ἀγαθός (bon)','ἀμείνων / βελτίων / κρείττων (meilleur)','ἄριστος / βέλτιστος / κράτιστος (le meilleur)']]},
+    {type:'callout', kind:'info', text:"Ces comparatifs irréguliers ont laissé des traces directes en français savant : « aristocratie » vient de ἄριστος (le meilleur) + κράτος (le pouvoir) = « le pouvoir des meilleurs »."},
+    {type:'p', text:"Le complément du comparatif (« que ») se construit soit avec ἤ + le même cas que le premier terme, soit, plus élégamment, avec le génitif seul."},
+    {type:'example', items:[{gr:'σοφώτερός ἐστι τοῦ ἀδελφοῦ', tr:'sophṓterós esti toû adelphoû', fr:"il est plus sage que son frère (génitif de comparaison)"}]}
+  ],
+  vocab:[
+    {gr:"σοφώτερος", tr:"sophṓteros", fr:"plus sage"},
+    {gr:"κάλλιστος", tr:"kállistos", fr:"le plus beau, très beau"},
+    {gr:"μείζων", tr:"meízōn", fr:"plus grand"},
+    {gr:"ἄριστος", tr:"áristos", fr:"le meilleur"},
+    {gr:"χείρων", tr:"kheírōn", fr:"pire"},
+    {gr:"ἤ", tr:"ḗ", fr:"que (comparaison) ; ou"}
+  ],
+  exercises:[
+    {type:'qcm', q:"Le suffixe régulier du comparatif est…", opts:['-τερος','-τατος','-ίων','-ικός'], correct:0, explain:"-τερος, -τέρα, -τερον forme le comparatif régulier."},
+    {type:'qcm', q:"« Le plus sage / très sage » se dit…", opts:['σοφώτερος','σοφώτατος','σοφός','σοφία'], correct:1, explain:"σοφώτατος, superlatif en -τατος."},
+    {type:'qcm', q:"Le comparatif irrégulier de μέγας (grand) est…", opts:['μεγάλτερος','μείζων','μέγιστος uniquement','μεγαλώτερος'], correct:1, explain:"μείζων est le comparatif irrégulier ; μέγιστος en est le superlatif."},
+    {type:'qcm', q:"Le complément du comparatif (« que ») peut se construire avec…", opts:['le génitif seul','le datif seul','ἤ suivi du même cas, ou le génitif seul','toujours le nominatif'], correct:2, explain:"Deux constructions possibles : ἤ + même cas, ou le génitif de comparaison."},
+    {type:'text', q:"« Aristocratie » vient du superlatif grec signifiant…", accepted:['le meilleur','les meilleurs'], explain:"ἄριστος (le meilleur) + κράτος (pouvoir) = « le pouvoir des meilleurs »."}
+  ]
+},
+{
+  title:"La voix moyenne et passive", grTitle:"Ἡ μέση καὶ ἡ παθητικὴ φωνή",
+  blocks:[
+    {type:'p', text:"Le grec distingue trois voix : l'<b>active</b> (le sujet fait l'action : λύω, « je délie »), la <b>moyenne</b> (le sujet est directement intéressé à l'action, agit pour lui-même : λύομαι, « je délie pour moi, je me délie ») et la <b>passive</b> (le sujet subit l'action : λύομαι, « je suis délié »)."},
+    {type:'table', caption:'Présent indicatif moyen-passif de λύω', headers:['Personne','Forme','Sens (selon contexte)'],
+     rows:[['1sg','λύομαι','je me délie / je suis délié'],['2sg','λύῃ','tu te délies / tu es délié'],['3sg','λύεται','il se délie / il est délié'],['1pl','λυόμεθα','nous nous délions / nous sommes déliés'],['2pl','λύεσθε','vous vous déliez / vous êtes déliés'],['3pl','λύονται','ils se délient / ils sont déliés']]},
+    {type:'rule', text:"Au présent (comme à l'imparfait, au parfait et au plus-que-parfait), la voix moyenne et la voix passive ont exactement les <b>mêmes formes</b> : seul le contexte permet de choisir entre les deux sens. Ce n'est qu'au futur et à l'aoriste que le passif prend des formes propres, marquées par le suffixe -θη-/-η- (ex. aoriste passif ἐλύθην, « je fus délié »)."},
+    {type:'callout', kind:'info', text:"Certains verbes, dits <b>déponents</b>, n'existent qu'à la voix moyenne mais ont un sens actif : βούλομαι (« je veux »). D'autres changent carrément de sens selon la voix : ἄρχω « je commande » / ἄρχομαι « je commence » ; πείθω « je persuade » / πείθομαι « j'obéis, j'ai confiance »."}
+  ],
+  vocab:[
+    {gr:"λύομαι", tr:"lúomai", fr:"je me délie / je suis délié"},
+    {gr:"βούλομαι", tr:"boúlomai", fr:"je veux (déponent)"},
+    {gr:"ἄρχομαι", tr:"árkhomai", fr:"je commence"},
+    {gr:"πείθομαι", tr:"peíthomai", fr:"j'obéis, j'ai confiance"}
+  ],
+  exercises:[
+    {type:'qcm', q:"La voix moyenne exprime en priorité…", opts:["que le sujet subit l'action","que le sujet est directement intéressé à l'action, agit pour lui-même","une action future","une négation"], correct:1, explain:"La voix moyenne marque l'intérêt direct du sujet à l'action qu'il accomplit."},
+    {type:'qcm', q:"Au présent, moyen et passif…", opts:['ont des formes totalement différentes','ont exactement les mêmes formes','n\'existent pas','se distinguent par l\'augment'], correct:1, explain:"Au présent (et à l'imparfait, au parfait), moyen et passif partagent les mêmes formes ; seul le contexte tranche."},
+    {type:'qcm', q:"Un verbe « déponent » comme βούλομαι…", opts:["n'a que des formes actives","n'a que des formes moyennes, mais un sens actif","n'existe qu'au passé","se conjugue comme εἰμί"], correct:1, explain:"βούλομαι n'a que des formes moyennes, mais se traduit par un sens actif : « je veux »."},
+    {type:'qcm', q:"πείθω (je persuade) et πείθομαι (…) illustrent…", opts:["un changement de sens entre actif et moyen","la même chose exactement","un temps différent seulement","un mode différent"], correct:0, explain:"πείθομαι, à la voix moyenne, signifie « j'obéis, j'ai confiance », un sens distinct de l'actif πείθω."},
+    {type:'text', q:"Ce qui distingue formellement le passif du moyen apparaît seulement à deux temps : le futur et…", accepted:['aoriste', "l'aoriste"], explain:"Au futur et à l'aoriste, le passif prend des formes propres en -θη-/-η-."}
+  ]
+},
+{
+  title:"L'infinitif", grTitle:"Τὸ ἀπαρέμφατον",
+  blocks:[
+    {type:'p', text:"L'infinitif grec fonctionne largement comme un nom verbal : il peut être sujet, complément d'objet, exprimer un but ou une destination, ou encore servir dans le discours indirect après des verbes de pensée, de parole ou de volonté."},
+    {type:'table', caption:'Les infinitifs de λύω', headers:['Temps','Voix active','Voix moyenne-passive'],
+     rows:[['Présent','λύειν','λύεσθαι'],['Futur','λύσειν','λύσεσθαι'],['Aoriste','λῦσαι','λύσασθαι'],['Parfait','λελυκέναι','λελύσθαι']]},
+    {type:'example', items:[
+      {gr:'βούλομαι μανθάνειν', tr:'boúlomai manthánein', fr:"je veux apprendre (infinitif complément d'un verbe de volonté)"},
+      {gr:'καλόν ἐστι μανθάνειν', tr:'kalón esti manthánein', fr:"il est beau d'apprendre (infinitif sujet)"}
+    ]},
+    {type:'callout', kind:'info', text:"Repère : l'infinitif présent actif se reconnaît facilement à sa terminaison en -ειν (λύ-ειν) ; à la voix moyenne-passive, il se termine en -εσθαι (λύ-εσθαι)."}
+  ],
+  vocab:[],
+  exercises:[
+    {type:'qcm', q:"L'infinitif présent actif de λύω est…", opts:['λύει','λύειν','λύεσθαι','λῦσαι'], correct:1, explain:"λύειν, reconnaissable à sa terminaison -ειν."},
+    {type:'qcm', q:"L'infinitif présent moyen-passif se reconnaît à la terminaison…", opts:['-ειν','-εσθαι','-ασθαι','-ναι'], correct:1, explain:"-εσθαι marque l'infinitif présent moyen-passif : λύεσθαι."},
+    {type:'qcm', q:"Dans « βούλομαι μανθάνειν » (je veux apprendre), μανθάνειν est…", opts:["le sujet du verbe","un infinitif complément d'objet","un participe","un nom au génitif"], correct:1, explain:"μανθάνειν complète βούλομαι comme complément d'objet, à la façon d'un nom verbal."},
+    {type:'text', q:"Écris l'infinitif aoriste actif de λύω.", accepted:['λῦσαι','λυσαι'], explain:"λῦσαι, infinitif aoriste actif."},
+    {type:'qcm', q:"L'infinitif grec peut fonctionner comme…", opts:['sujet, complément d\'objet, ou but','seulement complément d\'objet','uniquement adjectif','uniquement adverbe'], correct:0, explain:"L'infinitif, nom verbal, remplit plusieurs fonctions : sujet, COD, but, discours indirect..."}
+  ]
+},
+{
+  title:"Le participe", grTitle:"Ἡ μετοχή",
+  blocks:[
+    {type:'p', text:"Le participe est un adjectif verbal : il se décline comme un adjectif (en genre, nombre, cas) tout en gardant le sens et parfois les compléments du verbe. Il peut être substantivé (« celui qui... »), épithète, apposé au sujet, ou attribut."},
+    {type:'table', caption:'Participe présent actif de λύω : λύων, λύουσα, λῦον', headers:['Cas','Masculin','Féminin','Neutre'],
+     rows:[['Nom. sg','λύων','λύουσα','λῦον'],['Gén. sg','λύοντος','λυούσης','λύοντος']]},
+    {type:'example', items:[
+      {gr:'ὁ λύων', tr:'ho lúōn', fr:"celui qui délie (participe substantivé)"},
+      {gr:'ὁ ἄνθρωπος λύων ἀπέρχεται', tr:'ho ánthrōpos lúōn apérkhetai', fr:"l'homme s'en va en déliant / tout en déliant (participe apposé au sujet)"}
+    ]},
+    {type:'rule', text:"Le génitif du participe présent actif (-οντος au masc./neutre, -ούσης au féminin) le rattache à la même famille que les noms de la 3e déclinaison en consonne, ce qui explique sa déclinaison un peu particulière par rapport à un adjectif ordinaire."},
+    {type:'callout', kind:'info', text:"Le participe substantivé (précédé de l'article) est une tournure extrêmement fréquente en grec, souvent traduite en français par une proposition relative : ὁ λέγων = « celui qui parle »."}
+  ],
+  vocab:[],
+  exercises:[
+    {type:'qcm', q:"Le participe grec se comporte grammaticalement comme…", opts:['un nom invariable','un adjectif, décliné en genre/nombre/cas','un adverbe','une préposition'], correct:1, explain:"Le participe s'accorde comme un adjectif tout en gardant le sens du verbe."},
+    {type:'qcm', q:"Le participe présent actif masculin nominatif singulier de λύω est…", opts:['λύουσα','λῦον','λύων','λύοντος'], correct:2, explain:"λύων (masc.), λύουσα (fém.), λῦον (neutre)."},
+    {type:'qcm', q:"« ὁ λύων » (avec l'article) se traduit le plus souvent par…", opts:['« délier »','« celui qui délie »','« il délie »','« pour délier »'], correct:1, explain:"Le participe substantivé, précédé de l'article, équivaut à une relative : « celui qui délie »."},
+    {type:'text', q:"Écris le génitif singulier féminin du participe λύουσα.", accepted:['λυούσης','λυουσης'], explain:"λυούσης, génitif féminin singulier."},
+    {type:'qcm', q:"Dans « ὁ ἄνθρωπος λύων ἀπέρχεται », λύων est un participe…", opts:['substantivé','épithète','apposé au sujet','attribut du complément'], correct:2, explain:"Le participe, ici sans article, s'accorde avec le sujet et le décrit dans l'action : c'est un participe apposé (« épithète détachée »)."}
+  ]
+},
+{
+  title:"Le parfait", grTitle:"Ὁ παρακείμενος",
+  blocks:[
+    {type:'p', text:"Le parfait exprime un état présent résultant d'une action passée achevée : « j'ai délié (et le résultat de cette action dure encore) » — à distinguer de l'aoriste, qui se contente de rapporter le fait passé sans insister sur ses conséquences présentes."},
+    {type:'rule', text:"Le parfait se forme par un <b>redoublement</b> de la première consonne du radical suivie de -ε- (λύω → <b>λε</b>-λυ-), puis, pour de nombreux verbes, du suffixe -κ- et des désinences propres au parfait."},
+    {type:'table', caption:'Parfait actif de λύω : λέλυκα', headers:['Personne','Forme'],
+     rows:[['1sg','λέλυκα'],['2sg','λέλυκας'],['3sg','λέλυκε(ν)'],['1pl','λελύκαμεν'],['2pl','λελύκατε'],['3pl','λελύκασι(ν)']]},
+    {type:'callout', kind:'info', text:"Si le verbe commence par une voyelle, le redoublement se réalise par un simple allongement de cette voyelle plutôt que par une répétition de consonne — exactement le même principe que l'augment temporel vu à l'imparfait."},
+    {type:'example', items:[{gr:'γέγραφα', tr:'gégrapha', fr:"j'ai écrit (et l'écrit existe encore) — parfait de γράφω"}]}
+  ],
+  vocab:[],
+  exercises:[
+    {type:'qcm', q:"Le parfait, par rapport à l'aoriste, insiste sur…", opts:['la simple répétition de l\'action','le résultat présent d\'une action passée achevée','une action future','une supposition'], correct:1, explain:"Le parfait souligne qu'un état présent résulte d'une action passée."},
+    {type:'qcm', q:"Le parfait se caractérise avant tout par…", opts:["l'augment ἐ-","le redoublement de la consonne initiale + ε","le suffixe -σ-","la désinence -μι"], correct:1, explain:"Le redoublement (λέ-λυκα) est la marque distinctive du parfait."},
+    {type:'qcm', q:"« J'ai délié » (parfait 1ère pers. sg.) se dit…", opts:['λύω','ἔλυσα','λέλυκα','λύσω'], correct:2, explain:"λέλυκα, parfait actif."},
+    {type:'text', q:"Écris le parfait 3e pers. sg. de λύω.", accepted:['λέλυκε','λέλυκεν','λελυκε','λελυκεν'], explain:"λέλυκε(ν)."},
+    {type:'qcm', q:"Si un verbe commence par une voyelle, le redoublement du parfait se réalise par…", opts:['une répétition de la voyelle','un simple allongement de la voyelle','l\'ajout d\'un ε devant','la disparition de la voyelle'], correct:1, explain:"Comme à l'augment temporel de l'imparfait, la voyelle initiale s'allonge au lieu de se redoubler."}
+  ]
+},
+{
+  title:"Le subjonctif", grTitle:"Ἡ ὑποτακτική",
+  blocks:[
+    {type:'p', text:"Le subjonctif exprime l'éventualité envisagée comme probable, la volonté ou le but (dans les subordonnées introduites par ἵνα, « afin que »), ainsi que la défense à la 2e personne à l'aoriste (μή + subjonctif aoriste, « ne fais pas... », pour un futur ponctuel)."},
+    {type:'table', caption:'Subjonctif présent actif : λύω et εἰμί', headers:['Personne','λύω','εἰμί'],
+     rows:[['1sg','λύω','ὦ'],['2sg','λύῃς','ᾖς'],['3sg','λύῃ','ᾖ'],['1pl','λύωμεν','ὦμεν'],['2pl','λύητε','ἦτε'],['3pl','λύωσι(ν)','ὦσι(ν)']]},
+    {type:'rule', text:"Le subjonctif se reconnaît à l'<b>allongement</b> des voyelles thématiques de l'indicatif présent : ο devient ω, ε devient η (λύ<b>ω</b>, λύ<b>ῃ</b>ς... au lieu de λύω, λύεις...). Il ressemble donc de très près à l'indicatif, mais avec des voyelles longues partout."},
+    {type:'example', items:[{gr:'ἵνα μανθάνωμεν', tr:'hína manthánōmen', fr:"afin que nous apprenions (subordonnée de but)"}]},
+    {type:'callout', kind:'info', text:"Attention à ne pas confondre 1sg indicatif λύω et 1sg subjonctif λύω, identiques par hasard pour ce verbe précis : c'est la 2e et la 3e personne (λύεις/λύῃς, λύει/λύῃ) qui révèlent clairement la différence."}
+  ],
+  vocab:[
+    {gr:"ἵνα", tr:"hína", fr:"afin que (+ subjonctif)"},
+    {gr:"μή", tr:"mḗ", fr:"ne... pas (négation du subjonctif, de l'impératif, de l'infinitif...)"}
+  ],
+  exercises:[
+    {type:'qcm', q:"Le subjonctif se reconnaît en général par…", opts:["l'augment ἐ-","l'allongement des voyelles thématiques (ο→ω, ε→η)","le redoublement","le suffixe -σ-"], correct:1, explain:"ω et η remplacent les voyelles brèves ο/ε de l'indicatif présent."},
+    {type:'qcm', q:'« Afin que » (+ subjonctif) se dit…', opts:['μή','ἵνα','ἤ','δέ'], correct:1, explain:"ἵνα introduit une subordonnée de but, suivie du subjonctif."},
+    {type:'qcm', q:"Le subjonctif présent 2e pers. sg. de λύω est…", opts:['λύεις','λύῃς','λύοις','λύε'], correct:1, explain:"λύῃς, avec le η caractéristique du subjonctif."},
+    {type:'text', q:"Écris le subjonctif présent de εἰμί à la 1ère personne du singulier.", accepted:['ὦ'], explain:"ὦ, subjonctif présent de εἰμί, 1sg."},
+    {type:'qcm', q:"La négation du subjonctif (et de l'impératif) est…", opts:['οὐ','μή','οὐκ','οὐχ'], correct:1, explain:"μή, et non οὐ, est la négation employée avec le subjonctif, l'impératif et l'infinitif."}
+  ]
+},
+{
+  title:"L'optatif", grTitle:"Ἡ εὐκτική",
+  blocks:[
+    {type:'p', text:"L'optatif, littéralement « mode du souhait », exprime avant tout un souhait réalisable (« puissé-je... ! »), mais aussi l'éventualité dans un contexte passé, ou une condition potentielle (« si..., il se pourrait que... »). C'est un mode très caractéristique du grec, sans équivalent direct en français."},
+    {type:'table', caption:'Optatif présent actif de λύω', headers:['Personne','Forme'],
+     rows:[['1sg','λύοιμι'],['2sg','λύοις'],['3sg','λύοι'],['1pl','λύοιμεν'],['2pl','λύοιτε'],['3pl','λύοιεν']]},
+    {type:'rule', text:"L'optatif des verbes thématiques comme λύω se forme avec le suffixe <b>-οι-</b> inséré entre le radical et la désinence — un repère sonore assez facile à reconnaître une fois qu'on le connaît."},
+    {type:'example', items:[{gr:'εἴθε λύοιμι', tr:'eíthe lúoimi', fr:"puissé-je délier ! si seulement je déliais !"}]},
+    {type:'callout', kind:'info', text:"L'optatif de souhait est souvent introduit par les particules εἴθε ou εἰ γάρ, comme un point d'exclamation grammatical : « si seulement... ! »."}
+  ],
+  vocab:[
+    {gr:"εἴθε", tr:"eíthe", fr:"puisse..., si seulement... (souhait + optatif)"}
+  ],
+  exercises:[
+    {type:'qcm', q:"L'optatif exprime avant tout…", opts:['un ordre','un souhait, ou une éventualité','une simple description','une négation'], correct:1, explain:"L'optatif est le mode du souhait et de l'éventualité, notamment dans le passé ou l'hypothèse."},
+    {type:'qcm', q:"L'optatif présent des verbes thématiques comme λύω se marque par le suffixe…", opts:['-ω-','-οι-','-θη-','-κ-'], correct:1, explain:"-οι- s'insère entre le radical et la désinence : λύ-οι-μι."},
+    {type:'qcm', q:'« Puissé-je délier ! » se dit…', opts:['λύω','λύοιμι','ἔλυσα','λύσω'], correct:1, explain:"λύοιμι, optatif présent 1ère personne du singulier."},
+    {type:'text', q:"Quelle particule introduit typiquement un souhait à l'optatif (« si seulement... ») ?", accepted:['εἴθε','ειθε'], explain:"εἴθε introduit le souhait exprimé à l'optatif."},
+    {type:'qcm', q:"Comparé au subjonctif (voyelles ω/η), l'optatif se reconnaît plutôt par…", opts:['la lettre ι insérée dans la désinence','l\'augment ἐ-','le redoublement','le suffixe -σ-'], correct:0, explain:"Le ι (dans -οι- ou -ιη-/-ι-) est le signal sonore de l'optatif."}
+  ]
+},
+{
+  title:"L'impératif", grTitle:"Ἡ προστακτική",
+  blocks:[
+    {type:'p', text:"L'impératif est le mode de l'ordre et de la défense. Il n'existe qu'aux 2e et 3e personnes (le grec n'a pas besoin d'un impératif de 1ère personne : pour « allons ! », il utilise le subjonctif dit « exhortatif », par exemple λύωμεν, « délions »)."},
+    {type:'table', caption:'Impératif présent actif : λύω et εἰμί', headers:['Personne','λύω','εἰμί'],
+     rows:[['2sg','λῦε (« délie ! »)','ἴσθι (« sois ! »)'],['3sg','λυέτω (« qu\'il délie ! »)','ἔστω (« qu\'il soit ! »)'],['2pl','λύετε (« déliez ! »)','ἔστε (« soyez ! »)'],['3pl','λυόντων (« qu\'ils délient ! »)','ἔστων (« qu\'ils soient ! »)']]},
+    {type:'rule', text:"Pour interdire quelque chose (la <b>défense</b>), le grec emploie <b>μή + impératif présent</b> pour une interdiction durable ou générale, mais <b>μή + subjonctif aoriste</b> (jamais l'impératif aoriste) pour interdire un acte ponctuel."},
+    {type:'example', items:[
+      {gr:'λῦε τὸν δοῦλον', tr:'lûe tòn doûlon', fr:"délie l'esclave ! (ordre direct, 2e pers. sg.)"},
+      {gr:'μὴ λῦε', tr:'mḕ lûe', fr:"ne délie pas (habituellement / en général)"}
+    ]}
+  ],
+  vocab:[],
+  exercises:[
+    {type:'qcm', q:"L'impératif grec existe…", opts:["à toutes les personnes","seulement à la 2e et à la 3e personne","seulement à la 1ère personne","seulement au pluriel"], correct:1, explain:"Le grec n'a pas de 1ère personne de l'impératif : il utilise le subjonctif exhortatif à sa place."},
+    {type:'qcm', q:'« Délie ! » (2e pers. sg.) se dit…', opts:['λύε','λῦε','λύεις','λύειν'], correct:1, explain:"λῦε, impératif présent 2e personne du singulier."},
+    {type:'qcm', q:'« Sois ! » (impératif de εἰμί, 2sg) se dit…', opts:['ἐστί','εἶ','ἴσθι','ἔστω'], correct:2, explain:"ἴσθι = sois !"},
+    {type:'qcm', q:"Pour interdire un acte ponctuel (« ne fais pas cela, maintenant »), le grec préfère…", opts:['μή + impératif aoriste','μή + subjonctif aoriste','οὐ + impératif présent','μή + indicatif'], correct:1, explain:"L'impératif aoriste n'est jamais utilisé à la forme négative : on emploie μή + subjonctif aoriste."},
+    {type:'text', q:"Écris l'impératif présent 3e pers. sg. de λύω (« qu'il délie ! »).", accepted:['λυέτω','λυετω'], explain:"λυέτω, impératif de 3e personne."}
+  ]
+},
+{
+  title:"Les pronoms démonstratifs", grTitle:"Αἱ δεικτικαὶ ἀντωνυμίαι",
+  blocks:[
+    {type:'p', text:"Le grec distingue trois degrés d'éloignement dans ses démonstratifs : ὅδε (« celui-ci, qui va suivre » — annonce ce qu'on va dire), οὗτος (« celui-ci / celui-là », le plus général et le plus fréquent), et ἐκεῖνος (« celui-là, là-bas », marquant l'éloignement)."},
+    {type:'table', caption:'Οὗτος, αὕτη, τοῦτο — « celui-ci, celui-là »', headers:['Cas','Masc. sg','Fém. sg','Neutre sg'],
+     rows:[['Nom.','οὗτος','αὕτη','τοῦτο'],['Acc.','τοῦτον','ταύτην','τοῦτο'],['Gén.','τούτου','ταύτης','τούτου'],['Dat.','τούτῳ','ταύτῃ','τούτῳ']]},
+    {type:'rule', text:"οὗτος se décline presque comme l'article : un <b>esprit rude</b> au nominatif masculin et féminin, puis un <b>τ</b> à tous les autres cas — un repère très reconnaissable une fois vu."},
+    {type:'example', items:[
+      {gr:'τάδε λέγω', tr:'táde légō', fr:"voici ce que je dis (ὅδε annonce ce qui suit)"},
+      {gr:'ἐκεῖνος ὁ ἀνήρ σοφός ἐστιν', tr:'ekeînos ho anḗr sophós estin', fr:"cet homme-là (au loin) est sage"}
+    ]}
+  ],
+  vocab:[
+    {gr:"οὗτος, αὕτη, τοῦτο", tr:"hoûtos, haútē, toûto", fr:"celui-ci, celui-là (le plus courant)"},
+    {gr:"ὅδε, ἥδε, τόδε", tr:"hóde, hḗde, tóde", fr:"celui-ci (qui va suivre, très proche)"},
+    {gr:"ἐκεῖνος, ἐκείνη, ἐκεῖνο", tr:"ekeînos, ekeínē, ekeîno", fr:"celui-là (là-bas, éloigné)"}
+  ],
+  exercises:[
+    {type:'qcm', q:"Parmi les trois démonstratifs, lequel marque l'éloignement (« celui-là, là-bas ») ?", opts:['ὅδε','οὗτος','ἐκεῖνος','αὐτός'], correct:2, explain:"ἐκεῖνος marque la plus grande distance, à l'opposé de ὅδε (proximité immédiate)."},
+    {type:'qcm', q:"Au nominatif singulier masculin et féminin, οὗτος et αὕτη commencent par…", opts:['un τ','un esprit rude','un esprit doux suivi de ν','un κ'], correct:1, explain:"L'esprit rude marque le nominatif ; ailleurs, la première syllabe commence par τ."},
+    {type:'qcm', q:"Le génitif singulier féminin de οὗτος est…", opts:['ταύτης','τούτου','ταύτῃ','αὕτη'], correct:0, explain:"ταύτης, génitif féminin singulier."},
+    {type:'text', q:"Écris l'accusatif masculin singulier de οὗτος.", accepted:['τοῦτον','τουτον'], explain:"τοῦτον, accusatif masculin singulier."},
+    {type:'qcm', q:"ὅδε, contrairement à οὗτος, sert surtout à…", opts:['désigner un objet lointain','annoncer ce qu\'on va dire, dans l\'instant présent','poser une question','exprimer un souhait'], correct:1, explain:"ὅδε (« celui-ci, qui va suivre ») annonce ce qui vient d'être ou va être dit, en présentant."}
+  ]
+},
+{
+  title:"Le pronom relatif", grTitle:"Ἡ ἀναφορικὴ ἀντωνυμία",
+  blocks:[
+    {type:'p', text:"Le pronom relatif ὅς, ἥ, ὅ (« qui, que, dont... ») introduit une proposition relative. Il s'accorde en <b>genre</b> et en <b>nombre</b> avec son antécédent, mais prend le <b>cas</b> qui correspond à sa propre fonction à l'intérieur de la relative — ce qui peut donner un cas différent de celui de l'antécédent."},
+    {type:'table', caption:'Ὅς, ἥ, ὅ — qui, que', headers:['Cas','Masc. sg','Fém. sg','Neutre sg','Masc. pl','Fém. pl','Neutre pl'],
+     rows:[['Nom.','ὅς','ἥ','ὅ','οἵ','αἵ','ἅ'],['Acc.','ὅν','ἥν','ὅ','οὕς','ἅς','ἅ'],['Gén.','οὗ','ἧς','οὗ','ὧν','ὧν','ὧν'],['Dat.','ᾧ','ᾗ','ᾧ','οἷς','αἷς','οἷς']]},
+    {type:'callout', kind:'warn', text:"Ne confonds pas le pronom relatif (ὅς, ἥ — esprit rude, accentué) avec l'article (ὁ, ἡ — esprit doux, généralement sans accent) : la seule différence graphique est parfois cet esprit et cet accent, mais le sens change du tout au tout."},
+    {type:'example', items:[
+      {gr:'ὁ ἀνὴρ ὃν ὁρῶ σοφός ἐστιν', tr:'ho anḕr hòn horỗ sophós estin', fr:"l'homme que je vois est sage (ὅν est à l'accusatif, COD de ὁρῶ, bien que l'antécédent ὁ ἀνήρ soit au nominatif, sujet)"}
+    ]},
+    {type:'rule', text:"Cette règle (accord en genre/nombre avec l'antécédent, mais cas déterminé par la fonction dans la relative) est l'un des points les plus importants à automatiser pour bien lire des phrases grecques suivies."}
+  ],
+  vocab:[
+    {gr:"ὅς, ἥ, ὅ", tr:"hós, hḗ, hó", fr:"qui, que, dont (pronom relatif)"}
+  ],
+  exercises:[
+    {type:'qcm', q:"Le pronom relatif s'accorde avec son antécédent en…", opts:['cas seulement','genre et nombre (le cas dépend de sa fonction dans la relative)','cas et nombre uniquement','rien du tout'], correct:1, explain:"Genre et nombre suivent l'antécédent ; le cas dépend uniquement de la fonction du relatif dans sa propre proposition."},
+    {type:'qcm', q:"Ce qui distingue le pronom relatif ὅς de l'article ὁ, c'est notamment…", opts:['la déclinaison complète, très différente','l\'esprit rude et l\'accent','le nombre de cas','le genre'], correct:1, explain:"Graphiquement, l'esprit et l'accent sont souvent la seule différence visible entre les deux."},
+    {type:'qcm', q:"Le génitif singulier masculin/neutre du relatif est…", opts:['οὗ','ᾧ','ὅν','ὅς'], correct:0, explain:"οὗ, génitif singulier masculin et neutre."},
+    {type:'text', q:"Écris le nominatif féminin singulier du pronom relatif.", accepted:['ἥ'], explain:"ἥ, nominatif féminin singulier — attention à l'esprit rude et à l'accent."},
+    {type:'qcm', q:"Dans « ὁ ἀνὴρ ὃν ὁρῶ », le relatif ὅν est au…", opts:['nominatif, comme l\'antécédent','accusatif, parce qu\'il est COD de ὁρῶ dans la relative','génitif','datif'], correct:1, explain:"Le relatif prend le cas de sa fonction propre (ici COD de ὁρῶ), indépendamment du cas de son antécédent."}
+  ]
+},
+{
+  title:"Les verbes en -μι", grTitle:"Τὰ ῥήματα εἰς -μι",
+  blocks:[
+    {type:'p', text:"Un petit nombre de verbes très fréquents — mais très importants — ne suivent pas le modèle « thématique » de λύω : ce sont les verbes dits « athématiques » ou « en -μι », qui attachent les désinences directement au radical, sans voyelle de liaison. Les trois plus courants sont τίθημι (« je place, je pose »), δίδωμι (« je donne ») et ἵστημι (« je place debout, je dresse »)."},
+    {type:'table', caption:'Présent actif : τίθημι, δίδωμι, ἵστημι', headers:['Personne','τίθημι (je place)','δίδωμι (je donne)','ἵστημι (je dresse)'],
+     rows:[['1sg','τίθημι','δίδωμι','ἵστημι'],['2sg','τίθης','δίδως','ἵστης'],['3sg','τίθησι(ν)','δίδωσι(ν)','ἵστησι(ν)'],['1pl','τίθεμεν','δίδομεν','ἵσταμεν'],['2pl','τίθετε','δίδοτε','ἵστατε'],['3pl','τιθέασι(ν)','διδόασι(ν)','ἱστᾶσι(ν)']]},
+    {type:'rule', text:"Ces verbes présentent une <b>voyelle longue</b> au radical au singulier de l'actif (τί<b>θη</b>μι, δί<b>δω</b>μι, ἵ<b>στη</b>μι), et une <b>voyelle brève</b> partout ailleurs (τί<b>θε</b>μεν, δί<b>δο</b>μεν, ἵ<b>στα</b>μεν) — une alternance longue/brève qui remplace la voyelle thématique ο/ε de λύω."},
+    {type:'example', items:[{gr:'δίδωμι τῷ φίλῳ δῶρον', tr:'dídōmi tỗi phílōi dỗron', fr:"je donne un cadeau à l'ami"}]},
+    {type:'callout', kind:'info', text:"Ces trois verbes ont donné énormément de composés en grec (ex. παρα-δίδωμι, « transmettre », d'où « paradosis, tradition ») : les reconnaître au présent est une clé pour comprendre ensuite tous leurs dérivés."}
+  ],
+  vocab:[
+    {gr:"τίθημι", tr:"títhēmi", fr:"je place, je pose"},
+    {gr:"δίδωμι", tr:"dídōmi", fr:"je donne"},
+    {gr:"ἵστημι", tr:"hístēmi", fr:"je place debout, je dresse"}
+  ],
+  exercises:[
+    {type:'qcm', q:"Les verbes « en -μι » se distinguent de λύω parce qu'ils…", opts:["n'ont pas de désinences","attachent les désinences directement au radical, sans voyelle thématique","n'existent qu'au passé","sont toujours déponents"], correct:1, explain:"Ce sont des verbes « athématiques » : pas de ο/ε de liaison entre radical et désinence."},
+    {type:'qcm', q:'« Je donne » se dit…', opts:['τίθημι','δίδωμι','ἵστημι','εἰμί'], correct:1, explain:"δίδωμι = je donne."},
+    {type:'qcm', q:"Au singulier actif, le radical de ces verbes présente une voyelle…", opts:['toujours brève','longue','absente','redoublée'], correct:1, explain:"Voyelle longue au singulier actif (τίθη-, δίδω-, ἵστη-), brève ailleurs."},
+    {type:'text', q:"Écris la 3e pers. sg. du présent de τίθημι.", accepted:['τίθησι','τίθησιν','τιθησι','τιθησιν'], explain:"τίθησι(ν)."},
+    {type:'qcm', q:"La 3e personne du pluriel de ἵστημι est…", opts:['ἵστασι','ἱστᾶσι(ν)','ἵστησι(ν)','ἵστατε'], correct:1, explain:"ἱστᾶσι(ν), avec contraction de la voyelle finale du radical et de la désinence."}
+  ]
+},
+{
+  title:"Le discours indirect", grTitle:"Ὁ πλάγιος λόγος",
+  blocks:[
+    {type:'p', text:"Pour rapporter les paroles ou les pensées de quelqu'un, le grec dispose de trois constructions différentes, selon le sens du verbe introducteur — et, à la différence du latin (toujours à l'infinitif), il conserve très souvent le mode d'origine de la phrase rapportée."},
+    {type:'table', caption:'Les trois constructions du discours indirect', headers:['Construction','Après quel type de verbe ?','Exemple'],
+     rows:[['ὅτι / ὡς + indicatif (mode conservé)','verbes déclaratifs : λέγω (je dis), ἀγγέλλω (j\'annonce)','λέγομεν ὅτι φίλους οὐκ ἔχουσιν'],['infinitif','verbes d\'opinion : νομίζω (je pense), φημί (je dis, j\'affirme)','νομίζω αὐτὸν σοφὸν εἶναι'],['participe','verbes de perception/connaissance : οἶδα (je sais), ὁρῶ (je vois)','οἶδα αὐτὸν σοφὸν ὄντα']]},
+    {type:'example', items:[{gr:'λέγομεν ὅτι φίλους οὐκ ἔχουσιν', tr:'légomen hóti phílous ouk ékhousin', fr:"nous disons qu'ils n'ont pas d'amis"}]},
+    {type:'callout', kind:'info', text:"Repère essentiel : avec ὅτι/ὡς, le verbe de la subordonnée garde exactement le mode et le temps qu'il aurait eus au discours direct — le grec ne « recule » pas les temps comme le fait parfois le français ou l'anglais."}
+  ],
+  vocab:[
+    {gr:"ὅτι", tr:"hóti", fr:"que (discours indirect objectif)"},
+    {gr:"ὡς", tr:"hōs", fr:"que (discours indirect, nuance subjective) ; comme"},
+    {gr:"νομίζω", tr:"nomízō", fr:"je pense, je considère"},
+    {gr:"φημί", tr:"phēmí", fr:"je dis, j'affirme"}
+  ],
+  exercises:[
+    {type:'qcm', q:"Après un verbe déclaratif comme λέγω, le discours indirect se construit le plus souvent avec…", opts:['ὅτι/ὡς + indicatif','toujours l\'infinitif','toujours le participe','toujours le subjonctif'], correct:0, explain:"ὅτι/ὡς + indicatif, avec le mode conservé, est la construction normale après un verbe déclaratif."},
+    {type:'qcm', q:"Après νομίζω (je pense) ou φημί (j'affirme), le discours indirect se construit avec…", opts:['ὅτι + indicatif','l\'infinitif','le participe seul','l\'impératif'], correct:1, explain:"νομίζω et φημί appellent une construction infinitive, comme en latin."},
+    {type:'qcm', q:"Après un verbe de perception comme οἶδα (je sais) ou ὁρῶ (je vois), on emploie…", opts:['ὅτι + subjonctif','l\'infinitif','le participe','l\'optatif seul'], correct:2, explain:"Les verbes de perception/connaissance introduisent volontiers un participe complément."},
+    {type:'qcm', q:"Contrairement au latin, le grec, dans le discours indirect introduit par ὅτι…", opts:["passe systématiquement à l'infinitif","conserve le mode et le temps du discours direct","supprime le verbe","utilise toujours l'optatif"], correct:1, explain:"C'est l'une des grandes différences avec le latin : pas de « concordance » systématique, le mode d'origine est conservé."},
+    {type:'text', q:"Quelle conjonction, à la nuance plus subjective que ὅτι, introduit aussi le discours indirect ?", accepted:['ὡς'], explain:"ὡς introduit le discours indirect avec une nuance plus subjective que ὅτι."}
+  ]
+},
+{
+  title:"Les propositions conditionnelles", grTitle:"Ὁ ὑποθετικὸς λόγος",
+  blocks:[
+    {type:'p', text:"Une période conditionnelle grecque comprend une <b>protase</b> (« si... », introduite par εἰ, négation μή) et une <b>apodose</b> (la conséquence, négation οὐ). Selon le degré de réalité de la condition, le grec distingue quatre types, chacun avec sa combinaison propre de modes et de temps."},
+    {type:'table', caption:'Les quatre types de périodes conditionnelles', headers:['Type','Protase','Apodose','Sens'],
+     rows:[['Réelle','εἰ + indicatif (tout temps)','indicatif','« si (c\'est le cas que)... »'],['Éventuelle','ἐάν (εἰ + ἄν) + subjonctif','indicatif (souvent futur)','« si jamais... » (dans l\'avenir)'],['Potentielle','εἰ + optatif','ἄν + optatif','« si... (il se pourrait que) »'],['Irréelle','εἰ + imparfait ou aoriste','ἄν + imparfait ou aoriste','« si... (mais ce n\'est pas / n\'a pas été le cas) »']]},
+    {type:'example', items:[
+      {gr:'εἰ τοῦτο πιστεύεις, ψεύδῃ', tr:'ei toûto pisteúeis, pseúdēi', fr:"si tu crois cela, tu te trompes (réelle : simple constat)"},
+      {gr:'εἰ τοῦτο ἐπίστευες, οὐκ ἂν ἐψεύδου', tr:'ei toûto epísteues, ouk àn epseúdou', fr:"si tu croyais cela (mais tu ne le crois pas), tu ne te tromperais pas (irréelle du présent)"}
+    ]},
+    {type:'callout', kind:'info', text:"Le signal le plus repérable de l'irréel est la particule <b>ἄν</b> dans l'apodose, combinée à un temps secondaire (imparfait ou aoriste) sans augment de sens temporel réel — c'est ce ἄν qui indique que la conséquence, elle aussi, reste hypothétique."}
+  ],
+  vocab:[
+    {gr:"εἰ", tr:"ei", fr:"si (introduit la protase)"},
+    {gr:"ἄν", tr:"án", fr:"particule marquant l'éventualité, le potentiel ou l'irréel"}
+  ],
+  exercises:[
+    {type:'qcm', q:"La protase d'une période conditionnelle est introduite par…", opts:['ὅτι','εἰ','ἵνα','ὡς'], correct:1, explain:"εἰ (« si ») introduit la protase ; sa négation est μή."},
+    {type:'qcm', q:"Le type « irréel » présente la condition comme…", opts:['probable dans l\'avenir','une pure hypothèse ouverte','non réalisée (contraire au fait)','certaine'], correct:2, explain:"L'irréel présente la condition comme non réalisée — au présent ou au passé."},
+    {type:'qcm', q:"Le type « potentiel » se construit avec…", opts:['indicatif partout','εἰ + optatif, et ἄν + optatif à l\'apodose','εἰ + subjonctif','ἐάν + indicatif'], correct:1, explain:"Potentiel : εἰ + optatif en protase, ἄν + optatif en apodose."},
+    {type:'qcm', q:"La particule qui signale typiquement l'irréel et le potentiel dans l'apodose est…", opts:['ἄν','ὅτι','μή','ἵνα'], correct:0, explain:"ἄν, combinée à l'optatif (potentiel) ou à un temps secondaire (irréel)."},
+    {type:'text', q:"Quelle est la négation employée dans la protase (« si ») d'une conditionnelle ?", accepted:['μή'], explain:"μή est la négation de la protase, quel que soit le type de conditionnelle."}
+  ]
+},
+{
+  title:"Bilan du parcours", grTitle:"Ἡ ἀνακεφαλαίωσις",
+  blocks:[
+    {type:'p', text:"Voici la fin de ce premier parcours de grec ancien ! En 26 leçons, tu as vu l'alphabet et la prononciation, les trois déclinaisons des noms, les principaux pronoms, l'essentiel du système verbal (voix active/moyenne/passive, tous les modes de l'indicatif au subjonctif en passant par l'optatif et l'impératif, et les temps du présent au parfait), ainsi que les grandes constructions de phrase : discours indirect, conditionnelles, relatives."},
+    {type:'rule', text:"Ce socle grammatical correspond à ce qu'on appelle traditionnellement « les rudiments » : de quoi commencer à déchiffrer, dictionnaire en main, des textes simples — fables d'Ésope, extraits du Nouveau Testament, dialogues faciles de Platon — puis progresser vers des auteurs plus exigeants comme Xénophon, Lysias, et, bien plus tard, Homère ou Thucydide."},
+    {type:'callout', kind:'info', text:"La suite logique n'est plus tant d'apprendre de nouvelles règles que de <b>pratiquer</b> : relire les leçons précédentes, refaire les exercices ratés, et surtout commencer à lire de vrais textes courts, même très progressivement, une phrase à la fois."},
+    {type:'example', items:[{gr:'ἀρχὴ ἥμισυ παντός', tr:'arkhḕ hḗmisu pantós', fr:"« bien commencer, c'est déjà la moitié du travail » — proverbe grec traditionnel, pour la route"}]}
+  ],
+  vocab:[],
+  exercises:[
+    {type:'qcm', q:"Combien de déclinaisons le grec ancien possède-t-il ?", opts:['deux','trois','quatre','cinq'], correct:1, explain:"Trois déclinaisons : en -α/-η (1ère), en -ος/-ον (2e), et en consonne ou -ι/-υ (3e)."},
+    {type:'qcm', q:"Parmi les trois voix du verbe grec, laquelle exprime que le sujet est directement intéressé à l'action ?", opts:['active','moyenne','passive'], correct:1, explain:"La voix moyenne exprime l'intérêt direct du sujet à l'action qu'il accomplit."},
+    {type:'qcm', q:"Quel mode exprime avant tout le souhait ou l'éventualité, souvent traduit par « puissé-je... » ?", opts:['le subjonctif','l\'optatif','l\'impératif','l\'infinitif'], correct:1, explain:"L'optatif, littéralement « mode du souhait »."},
+    {type:'qcm', q:"Dans une période conditionnelle « irréelle », quelle particule apparaît typiquement dans l'apodose ?", opts:['ἄν','ἵνα','ὅτι','μή'], correct:0, explain:"ἄν, combiné à un temps secondaire, signale l'irréel dans l'apodose."},
+    {type:'qcm', q:"Après un verbe comme οἶδα (« je sais »), le discours indirect se construit typiquement avec…", opts:['un infinitif','un participe','ὅτι + subjonctif','l\'impératif'], correct:1, explain:"Les verbes de perception/connaissance comme οἶδα appellent un participe complément."},
+    {type:'text', q:"Écris (en grec) le verbe « être » à l'infinitif présent.", accepted:['εἶναι','ειναι'], explain:"εἶναι, infinitif présent de εἰμί."}
+  ]
 }
 ];
 
@@ -1011,7 +1354,7 @@ function refreshTopStats(){
 
 function renderSidebar(){
   const items = LESSONS.map((l,i)=>{
-    const ord = ['Α΄','Β΄','Γ΄','Δ΄','Ε΄','Ϛ΄','Ζ΄','Η΄','Θ΄','Ι΄','ΙΑ΄','ΙΒ΄'][i] || (i+1);
+    const ord = ['Α΄','Β΄','Γ΄','Δ΄','Ε΄','Ϛ΄','Ζ΄','Η΄','Θ΄','Ι΄','ΙΑ΄','ΙΒ΄','ΙΓ΄','ΙΔ΄','ΙΕ΄','ΙϚ΄','ΙΖ΄','ΙΗ΄','ΙΘ΄','Κ΄','ΚΑ΄','ΚΒ΄','ΚΓ΄','ΚΔ΄','ΚΕ΄','ΚϚ΄'][i] || (i+1);
     const cls = 'navitem' + (i===STATE.lesson?' active':'') + (STATE.completed.has(i)?' done':'');
     return `<div class="${cls}" onclick="STATE.lesson=${i};STATE.tab='cours';render()">
       <span class="num">${ord}</span><span>${l.title}</span>
