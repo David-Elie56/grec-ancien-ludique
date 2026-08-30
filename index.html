@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ἡ γλῶττα · Grec Ancien Ludique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Gentium+Plus:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f2740;
+  --ink2:#163a5c;
+  --ink3:#1f4a72;
+  --gold:#b8935a;
+  --gold-light:#d9bb85;
+  --gold-dim:#8a6f42;
+  --marble:#f3f0e6;
+  --marble2:#e7e0cc;
+  --paper:#fbf9f1;
+  --text:#22201a;
+  --text-soft:#5a5546;
+  --red:#8a3324;
+  --green:#3f6b4f;
+  --shadow:0 10px 30px rgba(15,39,64,.13);
+  --radius:14px;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--marble);
+  background-image:
+    radial-gradient(ellipse at top left, rgba(184,147,90,.10), transparent 55%),
+    radial-gradient(ellipse at bottom right, rgba(15,39,64,.07), transparent 55%);
+  color:var(--text);
+  font-family:'Gentium Plus', serif;
+  min-height:100vh;
+}
+.gr{
+  font-family:'Gentium Plus', serif;
+  font-size:1.55em;
+  line-height:1.5;
+  cursor:pointer;
+  color:var(--ink2);
+}
+.gr:hover{ text-decoration:underline; text-decoration-style:dotted; text-decoration-color:var(--gold-dim); text-underline-offset:4px; }
+.gr.playing{ color:var(--gold-dim); }
+.gr-static{ font-family:'Gentium Plus', serif; font-size:1.55em; line-height:1.5; }
+h1,h2,h3,h4{ font-family:'Cormorant Garamond', serif; color:var(--ink); margin:0 0 .4em 0; letter-spacing:.01em; }
+.ui{font-family:'Inter', sans-serif;}
+a{color:inherit;}
+button{font-family:'Inter', sans-serif; cursor:pointer;}
+
+#shell{ display:grid; grid-template-columns:250px 1fr; min-height:100vh; }
+.sidebar{
+  background:linear-gradient(180deg, var(--ink) 0%, var(--ink2) 100%);
+  color:var(--marble2); padding:28px 18px 24px; position:relative; overflow:hidden;
+}
+.sidebar::before{
+  content:"Ω"; position:absolute; font-family:'Cormorant Garamond',serif; font-size:340px; font-weight:700;
+  color:rgba(255,255,255,.035); top:-60px; left:-70px; line-height:1; pointer-events:none;
+}
+.brand{ display:flex; align-items:center; gap:12px; margin-bottom:22px; position:relative; }
+.brand .mark{
+  width:42px;height:42px;border-radius:50%; border:1.5px solid var(--gold-light);
+  display:flex;align-items:center;justify-content:center; font-family:'Cormorant Garamond',serif;
+  font-size:22px;color:var(--gold-light); flex:none;
+}
+.brand .name{font-size:15px;letter-spacing:.06em;text-transform:uppercase;font-family:'Inter',sans-serif;font-weight:600;color:var(--marble);}
+.brand .sub{font-size:11px;color:var(--gold-light);opacity:.8;}
+
+.statbar{ display:flex; gap:14px; margin-bottom:20px; position:relative; }
+.statchip{ font-family:'Inter',sans-serif; font-size:11.5px; color:var(--marble2); background:rgba(255,255,255,.06);
+  border:1px solid rgba(217,187,133,.25); border-radius:9px; padding:8px 10px; flex:1; text-align:center; }
+.statchip b{ display:block; font-size:16px; color:var(--gold-light); font-family:'Cormorant Garamond',serif; }
+
+.navgroup{margin-bottom:8px;position:relative;}
+.navgroup .label{ font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.14em; text-transform:uppercase;
+  color:var(--gold-light);opacity:.75; margin:0 0 8px 4px; }
+.navitem{ display:flex;align-items:center;gap:10px; padding:9px 10px;border-radius:9px; font-size:14px;color:var(--marble2);
+  cursor:pointer;border:1px solid transparent; transition:background .15s, border-color .15s; margin-bottom:2px; }
+.navitem .num{ font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--gold-light); width:22px;text-align:center;flex:none; }
+.navitem:hover{background:rgba(255,255,255,.06);}
+.navitem.active{background:rgba(184,147,90,.20);border-color:rgba(217,187,133,.35);color:#fff;}
+.navitem.done .num::after{content:" ✓"; font-size:10px;}
+
+main{ padding:34px 44px 70px; max-width:980px; }
+.topline{ display:flex;align-items:baseline;justify-content:space-between; border-bottom:2px solid var(--ink);
+  padding-bottom:14px;margin-bottom:22px; gap:16px;flex-wrap:wrap; }
+.topline .eyebrow{ font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.16em; text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px; }
+.topline h1{font-size:30px;margin:0;}
+.topline .grtitle{font-family:'Gentium Plus',serif;font-size:19px;color:var(--gold-dim);margin-top:2px;}
+
+.tabbar{ display:flex; gap:6px; margin-bottom:22px; }
+.tabbtn{ font-family:'Inter',sans-serif;font-size:13px;font-weight:600; padding:9px 16px;border-radius:9px 9px 0 0;
+  border:1px solid var(--marble2); border-bottom:none; background:var(--marble2); color:var(--text-soft); }
+.tabbtn.active{ background:var(--paper); color:var(--ink); border-color:var(--gold-dim); }
+
+.card{ background:var(--paper); border:1px solid var(--marble2); border-radius:var(--radius);
+  padding:22px 26px; margin-bottom:20px; box-shadow:var(--shadow); position:relative; }
+.card h3{font-size:19px;margin-bottom:.55em;color:var(--ink2);}
+.card h3 .en{font-family:'Inter',sans-serif;font-size:11px;color:var(--gold-dim);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:2px;}
+.card p{line-height:1.65;color:var(--text);margin:0 0 12px;}
+.card p:last-child{margin-bottom:0;}
+.rule{ background:var(--marble); border-left:3px solid var(--gold); padding:10px 16px;border-radius:0 8px 8px 0;
+  margin:12px 0;font-size:15px;line-height:1.6; }
+.example{ display:flex;align-items:center;gap:16px;flex-wrap:wrap; background:rgba(184,147,90,.08);
+  border:1px dashed var(--gold-dim); border-radius:10px; padding:10px 16px;margin:8px 0; }
+.example .gr{font-size:1.3em;color:var(--ink2);}
+.example .fr{font-family:'Inter',sans-serif;font-size:13px;color:var(--text-soft);}
+.example .tr{font-family:'Inter',sans-serif;font-size:12px;color:var(--gold-dim);font-style:italic;}
+
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0;}
+table.gridtbl{ width:100%;border-collapse:collapse;font-size:16px; }
+table.gridtbl th{ font-family:'Inter',sans-serif;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;
+  background:var(--ink2);color:var(--marble); padding:9px 11px;text-align:left; }
+table.gridtbl td{ padding:9px 11px;border-bottom:1px solid var(--marble2); vertical-align:middle; }
+table.gridtbl tr:nth-child(even) td{background:rgba(184,147,90,.06);}
+table.gridtbl caption{caption-side:top;text-align:left;font-family:'Inter',sans-serif;font-size:12px;color:var(--gold-dim);letter-spacing:.06em;text-transform:uppercase;padding-bottom:6px;}
+
+.callout{ border-radius:10px;padding:12px 16px;margin:12px 0;font-size:14px;line-height:1.55; display:flex;gap:10px;align-items:flex-start; }
+.callout.warn{background:#fbeae5;border:1px solid #e3b6a8;color:#6b2c1c;}
+.callout.info{background:#e9f0f5;border:1px solid #b7cfe0;color:#1b3a52;}
+.callout .ico{font-size:16px;flex:none;}
+
+.lesson-nav{ display:flex;justify-content:space-between;margin-top:26px;gap:10px; }
+.navbtn{ font-family:'Inter',sans-serif;font-size:13px;font-weight:600; background:var(--ink);color:var(--marble);
+  border:none;border-radius:9px; padding:10px 16px;display:flex;align-items:center;gap:8px; transition:background .15s; }
+.navbtn:hover{background:var(--ink3);}
+.navbtn:disabled{opacity:.35;cursor:default;}
+.btn-ghost{ font-family:'Inter',sans-serif;font-size:13px;font-weight:600;background:transparent;color:var(--ink2);
+  border:1.5px solid var(--gold-dim);border-radius:9px;padding:9px 14px; }
+
+.vocab-grid{ display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px; }
+.vcard{ background:var(--paper);border:1px solid var(--marble2);border-radius:12px; padding:16px;box-shadow:var(--shadow);
+  min-height:120px;display:flex;flex-direction:column;justify-content:space-between; transition:transform .12s; }
+.vcard:hover{transform:translateY(-2px);}
+.vcard .front .gr{font-size:1.7em;color:var(--ink2);display:block;}
+.vcard .front .tr{font-family:'Inter',sans-serif;font-size:12px;color:var(--gold-dim);font-style:italic;}
+.vcard .back{font-family:'Inter',sans-serif;font-size:13.5px;color:var(--text);margin-top:10px;padding-top:10px;border-top:1px solid var(--marble2);}
+.playbtn{ border:none;background:var(--marble);border-radius:50%;width:30px;height:30px;font-size:13px; }
+
+.progressbar{height:6px;background:var(--marble2);border-radius:6px;overflow:hidden;margin-bottom:20px;}
+.progressbar div{height:100%;background:var(--gold);transition:width .2s;}
+
+.qbox{ background:var(--paper);border:1px solid var(--marble2);border-radius:14px; padding:26px;box-shadow:var(--shadow); }
+.qbox .qprompt{padding:6px 0 20px;}
+.qbox .qprompt .gr{font-size:1.9em;color:var(--ink2);display:block;margin-bottom:6px;}
+.qbox .qprompt .fr{font-family:'Inter',sans-serif;font-size:16px;color:var(--text);}
+.optiongrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:620px;}
+.optbtn{ font-family:'Inter',sans-serif;font-size:14px;padding:13px 16px;border-radius:10px;
+  border:1.5px solid var(--marble2); background:var(--marble); text-align:left; }
+.optbtn:hover{border-color:var(--gold-dim);}
+.optbtn.correct{background:#e2f0e6;border-color:var(--green);color:#1f4a30;}
+.optbtn.wrong{background:#fbe4de;border-color:var(--red);color:#6b2416;}
+.optbtn:disabled{cursor:default;}
+.answerrow{display:flex;gap:10px;flex-wrap:wrap;max-width:620px;}
+.answerrow input[type=text]{ font-family:'Gentium Plus',serif;font-size:18px;padding:10px 14px;border-radius:9px;
+  border:1.5px solid var(--marble2);background:var(--marble);flex:1;min-width:220px; }
+.explain{ font-family:'Inter',sans-serif;font-size:13px;color:var(--text-soft);background:var(--marble);
+  border-radius:8px;padding:10px 14px;margin-top:16px; display:none; }
+.explain.show{display:block;}
+.qfoot{display:flex;justify-content:space-between;align-items:center;margin-top:20px;flex-wrap:wrap;gap:10px;}
+.qmeta{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--text-soft);}
+.resultbox{text-align:center;padding:20px 0;}
+.resultbox .score{font-family:'Cormorant Garamond',serif;font-size:44px;color:var(--ink2);}
+.badge{ display:inline-block;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;background:var(--gold);
+  color:#fff;border-radius:20px;padding:6px 14px;margin-top:10px; }
+
+.toast{ position:fixed;bottom:22px;right:22px;background:var(--ink);color:var(--marble);font-family:'Inter',sans-serif;
+  font-size:13px;padding:12px 18px;border-radius:10px;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);
+  transition:opacity .25s, transform .25s;pointer-events:none;z-index:50; }
+.toast.show{opacity:1;transform:translateY(0);}
+
+@media (max-width:820px){
+  #shell{grid-template-columns:1fr;}
+  .sidebar{padding:16px 14px;}
+  main{padding:20px 16px 60px;}
+  .optiongrid{grid-template-columns:1fr;}
+}
+
+/* ---------- écran de connexion / réglages ---------- */
+.authscreen{
+  position:fixed;inset:0;z-index:100;
+  background:var(--marble);
+  background-image:
+    radial-gradient(ellipse at top left, rgba(184,147,90,.12), transparent 55%),
+    radial-gradient(ellipse at bottom right, rgba(15,39,64,.09), transparent 55%);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.authcard{
+  background:var(--paper);border:1px solid var(--marble2);border-radius:18px;
+  box-shadow:var(--shadow);padding:34px 36px;max-width:400px;width:100%;
+}
+.authcard .mark2{
+  width:52px;height:52px;border-radius:50%;border:1.5px solid var(--gold-dim);
+  display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;
+  font-size:26px;color:var(--gold-dim);margin:0 auto 14px;
+}
+.authcard h2{font-size:23px;text-align:center;}
+.authcard .sub{font-family:'Inter',sans-serif;font-size:13px;color:var(--text-soft);text-align:center;margin-bottom:20px;}
+.authcard label{font-family:'Inter',sans-serif;font-size:12px;color:var(--text-soft);display:block;margin:12px 0 5px;}
+.authcard input[type=text],.authcard input[type=password]{
+  width:100%;font-family:'Inter',sans-serif;font-size:14.5px;padding:11px 13px;border-radius:9px;
+  border:1.5px solid var(--marble2);background:var(--marble);
+}
+.authcard .navbtn{width:100%;justify-content:center;margin-top:18px;padding:12px;font-size:14px;}
+.authcard .altlink{ display:block;text-align:center;font-family:'Inter',sans-serif;font-size:12.5px;
+  color:var(--gold-dim);margin-top:14px;background:none;border:none;text-decoration:underline;width:100%;}
+.authcard .errmsg{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--red);margin-top:10px;text-align:center;min-height:16px;}
+.userbadge{ display:flex;align-items:center;justify-content:space-between;gap:8px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(217,187,133,.25);border-radius:9px;
+  padding:8px 10px;margin-bottom:16px;font-family:'Inter',sans-serif;font-size:12.5px;color:var(--marble2);}
+.userbadge button{background:none;border:none;color:var(--gold-light);font-size:11.5px;text-decoration:underline;}
+</style>
+</head>
+<body>
+<div id="shell">
+  <nav class="sidebar" id="sidebar"></nav>
+  <main id="main"></main>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================================
+   DONNÉES : LEÇONS DE GREC ANCIEN
+   ========================================================================= */
+const ALPHABET = [
+ ["Α","α","alpha","a (bref ou long)"],
+ ["Β","β","bêta","b"],
+ ["Γ","γ","gamma","g dur (« gare ») ; se prononce « n » devant γ, κ, χ, ξ"],
+ ["Δ","δ","delta","d"],
+ ["Ε","ε","epsilon","e bref"],
+ ["Ζ","ζ","dzêta","dz"],
+ ["Η","η","êta","è long (« tête »)"],
+ ["Θ","θ","thêta","t aspiré (« th » anglais de « think »)"],
+ ["Ι","ι","iota","i (bref ou long)"],
+ ["Κ","κ","kappa","k (« corde »)"],
+ ["Λ","λ","lambda","l"],
+ ["Μ","μ","mu","m"],
+ ["Ν","ν","nu","n"],
+ ["Ξ","ξ","ksi","x (« boxe »)"],
+ ["Ο","ο","omicron","o bref"],
+ ["Π","π","pi","p"],
+ ["Ρ","ρ","rhô","r"],
+ ["Σ","σ / ς","sigma","s dur — s'écrit ς en fin de mot"],
+ ["Τ","τ","tau","t"],
+ ["Υ","υ","upsilon","u (proche du « ü » allemand)"],
+ ["Φ","φ","phi","p aspiré, rendu par « ph »"],
+ ["Χ","χ","khi","kh guttural (« Bach » allemand)"],
+ ["Ψ","ψ","psi","ps (« boxe »)"],
+ ["Ω","ω","oméga","o long ouvert"]
+];
+
+const LESSONS = [
+{
+  title:"L'alphabet grec", grTitle:"Τὸ ἀλφάβητον",
+  blocks:[
+    {type:'p', text:"L'alphabet grec compte 24 lettres. C'est de lui que dérivent l'alphabet latin (donc le nôtre) et l'alphabet cyrillique. On utilise ici la prononciation dite « érasmienne », en usage traditionnel dans l'enseignement francophone du grec ancien."},
+    {type:'table', caption:'Les 24 lettres', headers:['Majuscule','Minuscule','Nom','Prononciation'],
+     rows: ALPHABET.map(l=>[l[0],l[1],l[2],l[3]]), greekCols:[0,1]},
+    {type:'callout', kind:'info', text:"Clique sur n'importe quelle lettre ou n'importe quel mot grec de ce cours pour l'entendre : ton navigateur le lira à voix haute."},
+    {type:'p', text:"Beaucoup de mots grecs sont passés presque tels quels dans notre vocabulaire savant : λόγος a donné « logique » et tous les mots en « -logie » ; ψυχή a donné « psychologie » ; κόσμος a donné « cosmos » et « cosmétique »."}
+  ],
+  vocab:[
+    {gr:"λόγος", tr:"lógos", fr:"la parole, le discours, la raison"},
+    {gr:"φιλία", tr:"philía", fr:"l'amitié"},
+    {gr:"ψυχή", tr:"psukhế", fr:"l'âme, le souffle"},
+    {gr:"θεός", tr:"theós", fr:"le dieu"},
+    {gr:"ἄνθρωπος", tr:"ánthrōpos", fr:"l'être humain"},
+    {gr:"κόσμος", tr:"kósmos", fr:"le monde, l'ordre, la parure"}
+  ],
+  exercises:[
+    {type:'qcm', q:"Quelle lettre porte le nom de « thêta » ?", opts:['Θ θ','Τ τ','Φ φ','Χ χ'], correct:0, explain:"Θ θ (thêta) se prononce comme le « th » anglais de « think »."},
+    {type:'qcm', q:"Quelle lettre transcrit le son « ph » (comme dans « photo ») ?", opts:['Π π','Φ φ','Ψ ψ','Χ χ'], correct:1, explain:"Φ φ (phi) est un « p » aspiré, rendu en français par « ph »."},
+    {type:'qcm', q:"En fin de mot, le sigma s'écrit toujours…", opts:['σ','ς','σσ','ζ'], correct:1, explain:"Le sigma final prend la forme ς, par exemple λόγος."},
+    {type:'text', q:"Écris le nom (en français) de la lettre Ψ ψ.", accepted:['psi'], explain:"Ψ ψ se nomme « psi » et transcrit le groupe « ps »."},
+    {type:'text', q:"Écris le nom (en français) de la lettre Ω ω.", accepted:['omega','oméga'], explain:"Ω ω, « oméga », est un o long ouvert — l'opposé d'Ο ο (omicron), o bref."}
+  ]
+},
+{
+  title:"Esprits, accents et diphtongues", grTitle:"Πνεύματα καὶ τόνοι",
+  blocks:[
+    {type:'p', text:"Deux catégories de signes accompagnent les mots grecs : les esprits, qui notent (ou non) une aspiration, et les accents, qui notaient à l'origine une mélodie de la voix."},
+    {type:'rule', text:"<b>Esprit doux « ᾿ »</b> = absence d'aspiration. <b>Esprit rude « ῾ »</b> = aspiration, transcrite en français par un « h » (ex. ὑπό → « hypo- », ῥήτωρ → « rhéteur »). Tout mot commençant par une voyelle, une diphtongue, ou par ρ, porte obligatoirement un esprit ; υ et ρ initiaux sont toujours rudes."},
+    {type:'example', items:[
+      {gr:'ἀγαθός', tr:'agathós', fr:"bon (esprit doux) — cf. « Agathe »"},
+      {gr:'ὑποκριτής', tr:'hupokritếs', fr:"acteur (esprit rude) — cf. « hypocrite »"}
+    ]},
+    {type:'rule', text:"Presque tous les mots portent aussi un accent : aigu « ´ » (βάρβαρος), grave « ` » (τὸ δένδρον) ou circonflexe « ῀ » (σῶμα). En usage scolaire, on se contente en général de marquer légèrement la syllabe accentuée."},
+    {type:'table', caption:'Les diphtongues et leur prononciation', headers:['Diphtongue','Se prononce comme'],
+     rows:[['αι','« ai » de rail'],['οι','« oy » anglais (boy)'],['ει','« éi » de réveil'],['ου','« ou » de fou'],
+           ['αυ','« aou » (comme « aurum » latin)'],['ευ','« eu » de feu'],['ᾳ ῃ ῳ','a / ê / ô longs — le iota souscrit ne se prononce pas']],
+     greekCols:[0]},
+    {type:'callout', kind:'warn', text:"Le tréma « ¨ » indique au contraire que deux voyelles voisines ne forment PAS une diphtongue : Τρωϊκός se lit en trois syllabes [tro-i-kos]."},
+    {type:'table', caption:'Ponctuation : grec vs français', headers:['Signe grec','Équivaut à'],
+     rows:[['.','point'], [',','virgule'], ['; (point-virgule)',"point d'interrogation !"], ['· (point en haut)','point-virgule, deux-points ou point d\'exclamation selon le contexte']]}
+  ],
+  vocab:[
+    {gr:"ἀγαθός", tr:"agathós", fr:"bon"},
+    {gr:"εἰρήνη", tr:"eirếnē", fr:"la paix"},
+    {gr:"ὑποκριτής", tr:"hupokritếs", fr:"acteur"},
+    {gr:"ῥήτωρ", tr:"rhếtōr", fr:"orateur"},
+    {gr:"αἷμα", tr:"haîma", fr:"le sang"},
+    {gr:"εὑρίσκω", tr:"heurískō", fr:"je trouve"}
+  ],
+  exercises:[
+    {type:'qcm', q:"Un mot grec commençant par une voyelle porte toujours…", opts:['un esprit (doux ou rude)','un tréma','un accent circonflexe uniquement','rien de spécial'], correct:0, explain:"Tout mot commençant par une voyelle, une diphtongue ou un ρ initial porte un esprit."},
+    {type:'qcm', q:"L'esprit rude « ῾ » indique…", opts:['une aspiration (h)',"l'absence de son",'un ton descendant','une voyelle longue'], correct:0, explain:"L'esprit rude note une aspiration, transcrite en français par « h » (ex. ὑπό → hypo-)."},
+    {type:'qcm', q:"Comment se prononce la diphtongue « ου » ?", opts:['comme « ou » dans fou','comme « eu » dans feu','comme « ai » dans rail','comme « oi » anglais (boy)'], correct:0, explain:"ου se prononce « ou » (fou)."},
+    {type:'qcm', q:"Comment se prononce la diphtongue « ει » ?", opts:['comme « ai » dans rail','comme « éi » dans réveil','comme « oi » anglais (boy)','comme « eu »'], correct:1, explain:"ει se prononce comme le « éi » de réveil."},
+    {type:'text', q:"Quel signe indique que deux voyelles voisines ne forment PAS une diphtongue (ex. Τρωϊκός) ?", accepted:['tréma','le tréma'], explain:"Le tréma ¨ sépare deux voyelles qui, sans lui, se liraient comme une diphtongue."}
+  ]
+},
+{
+  title:"L'article et la 1ère déclinaison", grTitle:"Τὸ ἄρθρον",
+  blocks:[
+    {type:'p', text:"Le grec décline l'article, les noms, les adjectifs et les pronoms selon le genre (masculin, féminin, neutre), le nombre (singulier, duel, pluriel) et le cas."},
+    {type:'rule', text:"<b>Nominatif</b> = sujet · <b>Vocatif</b> = apostrophe (« ô... ») · <b>Accusatif</b> = complément d'objet direct · <b>Génitif</b> = complément du nom (« de ») · <b>Datif</b> = complément d'attribution (« à », « pour », le moyen)."},
+    {type:'table', caption:"L'article ὁ, ἡ, τό (« le, la »)", headers:['Cas','Masc. sg','Fém. sg','Neutre sg','Masc. pl','Fém. pl','Neutre pl'],
+     rows:[['Nom.','ὁ','ἡ','τό','οἱ','αἱ','τά'],['Acc.','τόν','τήν','τό','τούς','τάς','τά'],['Gén.','τοῦ','τῆς','τοῦ','τῶν','τῶν','τῶν'],['Dat.','τῷ','τῇ','τῷ','τοῖς','ταῖς','τοῖς']]},
+    {type:'p', text:"La 1ère déclinaison (en -α) regroupe surtout des noms féminins, sur le modèle de ἡ τιμή (l'honneur), qui se décline exactement comme l'article féminin."},
+    {type:'table', caption:"ἡ τιμή, τιμῆς — l'honneur", headers:['Cas','Singulier','Pluriel'],
+     rows:[['Nom./Voc.','τιμή','τιμαί'],['Acc.','τιμήν','τιμάς'],['Gén.','τιμῆς','τιμῶν'],['Dat.','τιμῇ','τιμαῖς']]},
+    {type:'callout', kind:'info', text:"Astuce : le génitif pluriel de la 1ère déclinaison porte toujours un accent circonflexe sur la dernière syllabe (τιμῶν, θυρῶν) — un repère très utile pour reconnaître ce cas au premier coup d'œil."}
+  ],
+  vocab:[
+    {gr:"ἡ τιμή", tr:"hē timế", fr:"l'honneur"},
+    {gr:"ἡ θύρα", tr:"hē thúra", fr:"la porte"},
+    {gr:"ἡ χώρα", tr:"hē khỗra", fr:"le pays, la contrée"},
+    {gr:"ἡ θάλασσα", tr:"hē thálassa", fr:"la mer"},
+    {gr:"ἡ ἡμέρα", tr:"hē hēméra", fr:"le jour"},
+    {gr:"ἡ ψυχή", tr:"hē psukhế", fr:"l'âme"},
+    {gr:"ἡ γλῶττα", tr:"hē glỗtta", fr:"la langue"},
+    {gr:"ἡ οἰκία", tr:"hē oikía", fr:"la maison"}
+  ],
+  exercises:[
+    {type:'qcm', q:"Quel est le nominatif féminin singulier de l'article ?", opts:['ὁ','ἡ','τό','αἱ'], correct:1, explain:"ἡ est le féminin singulier (« la »)."},
+    {type:'qcm', q:"Au génitif singulier, τιμή (l'honneur) devient…", opts:['τιμήν','τιμῆς','τιμῇ','τιμαί'], correct:1, explain:"Génitif singulier : τιμῆς."},
+    {type:'qcm', q:"Le mot ἡ θύρα (la porte) appartient à…", opts:['la 1ère déclinaison','la 2e déclinaison','la 3e déclinaison','aucune déclinaison'], correct:0, explain:"θύρα est un nom féminin en -α, 1ère déclinaison."},
+    {type:'text', q:'Écris le nominatif pluriel de l\'article féminin (« les », féminin).', accepted:['αἱ'], explain:"αἱ est le nominatif féminin pluriel de l'article."},
+    {type:'qcm', q:"Le génitif pluriel de la 1ère déclinaison porte toujours un accent…", opts:['aigu','grave','circonflexe','aucun'], correct:2, explain:"Le génitif pluriel de la 1ère déclinaison est toujours accentué d'un circonflexe : τιμῶν, θυρῶν."}
+  ]
+},
+{
+  title:"La 2e déclinaison", grTitle:"Ἡ δευτέρα κλίσις",
+  blocks:[
+    {type:'p', text:"La 2e déclinaison (en -ο-) regroupe des noms masculins en -ος et des noms neutres en -ον. Elle compte aussi quelques féminins irréguliers, comme ἡ ὁδός (le chemin)."},
+    {type:'table', caption:"ὁ δοῦλος (l'esclave) et τὸ δῶρον (le don)", headers:['Cas','Masc. sg','Neutre sg','Masc. pl','Neutre pl'],
+     rows:[['Nom.','δοῦλος','δῶρον','δοῦλοι','δῶρα'],['Voc.','δοῦλε','δῶρον','δοῦλοι','δῶρα'],['Acc.','δοῦλον','δῶρον','δούλους','δῶρα'],['Gén.','δούλου','δώρου','δούλων','δώρων'],['Dat.','δούλῳ','δώρῳ','δούλοις','δώροις']]},
+    {type:'rule', text:"Règle générale valable pour <b>tous</b> les neutres du grec, dans toutes les déclinaisons : le nominatif, le vocatif et l'accusatif sont toujours identiques entre eux, et se terminent en -α au pluriel."},
+    {type:'callout', kind:'info', text:"ἡ ὁδός, ὁδοῦ (le chemin, la route) se décline comme δοῦλος bien qu'elle soit féminine — le genre ne se devine donc pas toujours par la seule terminaison : il faut l'apprendre avec chaque mot, comme en allemand ou en russe."}
+  ],
+  vocab:[
+    {gr:"ὁ λόγος", tr:"ho lógos", fr:"la parole, le raisonnement"},
+    {gr:"ὁ ἄνθρωπος", tr:"ho ánthrōpos", fr:"l'être humain"},
+    {gr:"ὁ θεός", tr:"ho theós", fr:"le dieu"},
+    {gr:"τὸ δῶρον", tr:"tò dỗron", fr:"le cadeau"},
+    {gr:"τὸ βιβλίον", tr:"tò biblíon", fr:"le livre"},
+    {gr:"τὸ ἔργον", tr:"tò érgon", fr:"l'œuvre, le travail"},
+    {gr:"ἡ ὁδός", tr:"hē hodós", fr:"le chemin"},
+    {gr:"ὁ οὐρανός", tr:"ho ouranós", fr:"le ciel"}
+  ],
+  exercises:[
+    {type:'qcm', q:"δοῦλος (l'esclave) est du genre…", opts:['masculin','féminin','neutre'], correct:0, explain:"δοῦλος suit le modèle masculin en -ος."},
+    {type:'qcm', q:"Au nominatif ET à l'accusatif, les neutres comme δῶρον ont toujours…", opts:['la même forme','des formes différentes','pas de forme au nominatif'], correct:0, explain:"Règle générale du grec : le neutre a des formes identiques au nominatif, vocatif et accusatif."},
+    {type:'qcm', q:"Le nominatif-accusatif neutre pluriel se termine typiquement en…", opts:['-οι','-α','-ους','-ων'], correct:1, explain:"Nominatif/accusatif neutre pluriel : -α (ex. δῶρα)."},
+    {type:'text', q:"Écris le génitif singulier de δοῦλος.", accepted:['δούλου','δουλου'], explain:"Génitif singulier : δούλου."},
+    {type:'qcm', q:"ἡ ὁδός (le chemin) est un cas particulier car…", opts:["c'est un féminin de la 2e déclinaison","c'est un neutre de la 1ère déclinaison","elle ne se décline pas","elle est masculine"], correct:0, explain:"ὁδός se décline comme δοῦλος tout en étant féminine."}
+  ]
+},
+{
+  title:"Le verbe être et le présent actif", grTitle:"Τὸ ῥῆμα εἰμί",
+  blocks:[
+    {type:'p', text:"Le verbe « être », εἰμί, est très irrégulier — comme dans la plupart des langues (comparez to be/was/were, être/suis/fus). Son présent est présenté ici à côté de λύω (« je délie »), verbe « thématique » régulier qui sert de modèle à la majorité des verbes grecs."},
+    {type:'table', caption:"Présent de l'indicatif — voix active", headers:['Personne','λύω (je délie)','εἰμί (je suis)'],
+     rows:[['1sg','λύω','εἰμί'],['2sg','λύεις','εἶ'],['3sg','λύει','ἐστί(ν)'],['1pl','λύομεν','ἐσμέν'],['2pl','λύετε','ἐστέ'],['3pl','λύουσι(ν)','εἰσί(ν)']]},
+    {type:'rule', text:"Repère les désinences actives du présent, communes à (presque) tous les verbes thématiques : <b>-ω, -εις, -ει, -ομεν, -ετε, -ουσι(ν)</b>."},
+    {type:'example', items:[
+      {gr:'ὁ ἄνθρωπος γράφει', tr:'ho ánthrōpos gráphei', fr:"l'homme écrit"},
+      {gr:'οἱ μαθηταὶ λέγουσιν', tr:'hoi mathētaì légousin', fr:'les élèves parlent'}
+    ]}
+  ],
+  vocab:[
+    {gr:"εἰμί", tr:"eimí", fr:"je suis"},
+    {gr:"λύω", tr:"lúō", fr:"je délie"},
+    {gr:"γράφω", tr:"gráphō", fr:"j'écris"},
+    {gr:"λέγω", tr:"légō", fr:"je dis, je parle"},
+    {gr:"φιλέω", tr:"philéō", fr:"j'aime, je chéris"},
+    {gr:"γιγνώσκω", tr:"gignṓskō", fr:"je connais"},
+    {gr:"ἀκούω", tr:"akoúō", fr:"j'entends"},
+    {gr:"βλέπω", tr:"blépō", fr:"je vois, je regarde"}
+  ],
+  exercises:[
+    {type:'qcm', q:'« Je suis » se dit…', opts:['εἰμί','εἶ','ἐστί','ἐσμέν'], correct:0, explain:"εἰμί = je suis."},
+    {type:'qcm', q:'« Il / elle est » se dit…', opts:['εἰμί','εἶ','ἐστί(ν)','εἰσί(ν)'], correct:2, explain:"ἐστί(ν) = il/elle est."},
+    {type:'qcm', q:'« Ils / elles sont » se dit…', opts:['ἐστί','ἐσμέν','ἐστέ','εἰσί(ν)'], correct:3, explain:"εἰσί(ν) = ils/elles sont."},
+    {type:'qcm', q:"Le présent actif de λύω à la 2e personne du singulier est…", opts:['λύω','λύεις','λύει','λύομεν'], correct:1, explain:"λύεις = tu délies."},
+    {type:'text', q:"Complète : Ὁ ἄνθρωπος σοφός ___. (« L'homme est sage. »)", accepted:['ἐστί','ἐστίν','εστι','εστιν'], explain:"ἐστί(ν), 3e personne du singulier de εἰμί."}
+  ]
+},
+{
+  title:"Premières phrases", grTitle:"Αἱ πρῶται φράσεις",
+  blocks:[
+    {type:'p', text:"Les adjectifs s'accordent en genre, en nombre et en cas avec le nom qu'ils qualifient, et se placent le plus souvent entre l'article et le nom (« position attributive »)."},
+    {type:'example', items:[
+      {gr:'ὁ καλὸς λόγος', tr:'ho kalòs lógos', fr:'le beau discours'},
+      {gr:'ἡ σοφὴ ψυχή', tr:'hē sophề psukhế', fr:"l'âme sage"}
+    ]},
+    {type:'callout', kind:'info', text:"La négation οὐ devient οὐκ devant une voyelle à esprit doux, et οὐχ devant une voyelle à esprit rude — exactement comme notre « le » devient « l' » devant une voyelle."},
+    {type:'p', text:"Voici, à lire à voix haute, une phrase célèbre d'Aristote (Politique, I, 2) :"},
+    {type:'example', items:[
+      {gr:'ὁ ἄνθρωπος φύσει πολιτικὸν ζῷόν ἐστιν', tr:'ho ánthrōpos phúsei politikòn zỗón estin', fr:"l'homme est par nature un être fait pour vivre en cité (« un animal politique »)"}
+    ]}
+  ],
+  vocab:[
+    {gr:"καί", tr:"kaí", fr:"et"},
+    {gr:"οὐ / οὐκ / οὐχ", tr:"ou / ouk / oukh", fr:"ne...pas"},
+    {gr:"ἐν", tr:"en", fr:"dans (+ datif)"},
+    {gr:"καλός", tr:"kalós", fr:"beau, bon"},
+    {gr:"ἀγαθός", tr:"agathós", fr:"bon, de qualité"},
+    {gr:"μέγας", tr:"mégas", fr:"grand"},
+    {gr:"μικρός", tr:"mikrós", fr:"petit"},
+    {gr:"σοφός", tr:"sophós", fr:"sage"}
+  ],
+  exercises:[
+    {type:'qcm', q:'« bon, de qualité » se dit…', opts:['κακός','ἀγαθός','μέγας','μικρός'], correct:1, explain:"ἀγαθός = bon, de qualité."},
+    {type:'qcm', q:'« grand » se dit…', opts:['μικρός','καλός','μέγας','σοφός'], correct:2, explain:"μέγας = grand."},
+    {type:'qcm', q:"Dans la phrase d'Aristote, ζῷον signifie…", opts:['un dieu','un animal, un être vivant','une cité','une âme'], correct:1, explain:"ζῷον = un être vivant, un animal — d'où « zoologie »."},
+    {type:'qcm', q:'« et » (conjonction très fréquente) se dit…', opts:['ἤ','καί','ἀλλά','γάρ'], correct:1, explain:"καί = et."},
+    {type:'text', q:"La négation οὐ devient οὐκ devant… (un mot)", accepted:['voyelle','une voyelle'], explain:"οὐ → οὐκ devant une voyelle à esprit doux, οὐχ devant une voyelle à esprit rude."}
+  ]
+},
+{
+  title:"La 3e déclinaison", grTitle:"Ἡ τρίτη κλίσις",
+  blocks:[
+    {type:'p', text:"La 3e déclinaison rassemble tous les noms dont le génitif singulier se termine en -ος (parfois -ους ou -εως) et qui ne relèvent ni de la 1ère ni de la 2e déclinaison. On y trouve les trois genres, et le thème du mot — celui qui porte les désinences — s'obtient en retirant -ος du génitif. On le reconnaît souvent mieux au génitif qu'au nominatif, dont la forme est très variable."},
+    {type:'table', caption:'Désinences communes de la 3e déclinaison', headers:['Cas','Sg. masc./fém.','Sg. neutre','Pl. masc./fém.','Pl. neutre'],
+     rows:[['Nom.','-ς / allongement','ø','-ες','-α'],['Acc.','-α / -ν','ø','-ας','-α'],['Gén.','-ος','-ος','-ων','-ων'],['Dat.','-ι','-ι','-σι(ν)','-σι(ν)']]},
+    {type:'table', caption:'ὁ ῥήτωρ (orateur) et τὸ σῶμα (corps)', headers:['Cas','Masc. sg','Neutre sg','Masc. pl','Neutre pl'],
+     rows:[['Nom.','ῥήτωρ','σῶμα','ῥήτορες','σώματα'],['Voc.','ῥῆτορ','σῶμα','ῥήτορες','σώματα'],['Acc.','ῥήτορα','σῶμα','ῥήτορας','σώματα'],['Gén.','ῥήτορος','σώματος','ῥητόρων','σωμάτων'],['Dat.','ῥήτορι','σώματι','ῥήτορσι(ν)','σώμασι(ν)']]},
+    {type:'callout', kind:'info', text:"Le génitif singulier en -ος est le meilleur repère de la 3e déclinaison : c'est lui qui révèle le vrai thème du mot, parfois très différent du nominatif (ex. σῶμα, σώματ-ος : le -τ n'apparaît qu'à partir du génitif)."}
+  ],
+  vocab:[
+    {gr:"ὁ ῥήτωρ", tr:"ho rhếtōr", fr:"l'orateur"},
+    {gr:"τὸ σῶμα", tr:"tò sỗma", fr:"le corps"},
+    {gr:"ὁ ἀνήρ, τοῦ ἀνδρός", tr:"ho anḗr, toû andrós", fr:"l'homme, l'époux"},
+    {gr:"τὸ ὄνομα", tr:"tò ónoma", fr:"le nom"},
+    {gr:"ἡ ἐλπίς, τῆς ἐλπίδος", tr:"hē elpís", fr:"l'espoir"},
+    {gr:"ὁ Ἕλλην", tr:"ho Héllēn", fr:"le Grec"}
+  ],
+  exercises:[
+    {type:'qcm', q:"Un nom appartient à la 3e déclinaison quand son génitif singulier se termine en…", opts:['-ου','-ας','-ος','-ων'], correct:2, explain:"Le génitif singulier en -ος signale la 3e déclinaison."},
+    {type:'qcm', q:"Le génitif singulier de ῥήτωρ est…", opts:['ῥήτορος','ῥήτωρος','ῥητόρου','ῥήτορου'], correct:0, explain:"ῥήτωρ, ῥήτορ-ος."},
+    {type:'qcm', q:"Comme tous les neutres, σῶμα a un nominatif-accusatif pluriel en…", opts:['-οι','-α','-ες','-ων'], correct:1, explain:"σώματα, comme tous les neutres."},
+    {type:'text', q:"Écris le datif pluriel de ῥήτωρ.", accepted:['ῥήτορσι','ῥήτορσιν','ρητορσι','ρητορσιν'], explain:"Datif pluriel : ῥήτορσι(ν)."},
+    {type:'qcm', q:"Le thème réel de σῶμα (visible au génitif σώματ-ος) est…", opts:['σωμ-','σωμα-','σωματ-','σωματο-'], correct:2, explain:"Thème σωματ- ; le -τ final tombe seulement au nominatif-vocatif-accusatif singulier."}
+  ]
+},
+{
+  title:"Les nombres", grTitle:"Οἱ ἀριθμοί",
+  blocks:[
+    {type:'p', text:"Les nombres cardinaux grecs de 1 à 4 se déclinent comme des adjectifs (et varient selon le genre) ; à partir de 5, ils sont indéclinables jusqu'à 100."},
+    {type:'table', caption:'Les nombres de 1 à 10, puis 100, 1000, 10000', headers:['Chiffre','Grec'],
+     rows:[['1','εἷς, μία, ἕν'],['2','δύο'],['3','τρεῖς, τρία'],['4','τέσσαρες'],['5','πέντε'],['6','ἕξ'],['7','ἑπτά'],['8','ὀκτώ'],['9','ἐννέα'],['10','δέκα'],['100','ἑκατόν'],['1000','χίλιοι'],['10 000','μύριοι']],
+     greekCols:[1]},
+    {type:'rule', text:"« Un » se décline entièrement : <b>εἷς</b> (masc.), <b>μία</b> (fém.), <b>ἕν</b> (neutre) — d'où le préfixe « hén- » de « hénothéisme ». « Deux » (δύο) reste identique à presque tous les cas, souvenir de l'ancien duel grec. De 5 à 100, les nombres ne se déclinent pas du tout."},
+    {type:'example', items:[
+      {gr:'εἷς θεός', tr:'heîs theós', fr:'un seul dieu'},
+      {gr:'δέκα ἡμέραι', tr:'déka hēmérai', fr:'dix jours'}
+    ]},
+    {type:'callout', kind:'info', text:"Ces racines survivent dans notre vocabulaire savant : « hendécasyllabe » (ἕνδεκα, onze), « pentagone » (πέντε), « décathlon » (δέκα), « hécatombe » (ἑκατόν, cent — à l'origine, cent bœufs sacrifiés) et « myriade » (μύριοι, dix mille, ou « une infinité »)."}
+  ],
+  vocab:[
+    {gr:"εἷς, μία, ἕν", tr:"heîs, mía, hén", fr:"un, une"},
+    {gr:"δύο", tr:"dúo", fr:"deux"},
+    {gr:"τρεῖς, τρία", tr:"treîs, tría", fr:"trois"},
+    {gr:"πέντε", tr:"pénte", fr:"cinq"},
+    {gr:"δέκα", tr:"déka", fr:"dix"},
+    {gr:"ἑκατόν", tr:"hekatón", fr:"cent"},
+    {gr:"χίλιοι", tr:"khílioi", fr:"mille"},
+    {gr:"μύριοι", tr:"múrioi", fr:"dix mille ; une infinité"}
+  ],
+  exercises:[
+    {type:'qcm', q:'« Sept » se dit…', opts:['ἕξ','ἑπτά','ὀκτώ','ἐννέα'], correct:1, explain:"ἑπτά = sept — cf. « heptagone »."},
+    {type:'qcm', q:'« Cent » se dit…', opts:['δέκα','χίλιοι','ἑκατόν','μύριοι'], correct:2, explain:"ἑκατόν = cent — cf. « hécatombe »."},
+    {type:'qcm', q:'Parmi les nombres suivants, lequel se décline selon le genre (masc./fém./neutre) ?', opts:['πέντε','δέκα','εἷς, μία, ἕν','ἑκατόν'], correct:2, explain:"Seul « un » (et, dans une moindre mesure, « deux, trois, quatre ») se décline ; à partir de cinq, les nombres sont indéclinables."},
+    {type:'text', q:"Écris en grec le nombre « deux ».", accepted:['δύο','δυο'], explain:"δύο, resté quasi invariable, souvenir de l'ancien duel."},
+    {type:'qcm', q:"« Myriade » (μύριοι) désigne à l'origine…", opts:['cent','mille','dix mille','un million'], correct:2, explain:"μύριοι = dix mille, employé aussi au sens d'« innombrable »."}
+  ]
+},
+{
+  title:"L'imparfait", grTitle:"Ὁ παρατατικός",
+  blocks:[
+    {type:'p', text:"L'imparfait exprime une action passée envisagée dans sa durée, sa répétition ou son déroulement (« je déliais », « j'étais en train de délier ») — par opposition à l'aoriste, qui présente l'action comme un simple fait ponctuel. Il se forme sur le thème du présent, précédé de l'augment et suivi des désinences dites « secondaires »."},
+    {type:'rule', text:"L'<b>augment</b> ἐ- se place devant les verbes commençant par une consonne (λύω → ἔλυον). Devant une voyelle, l'augment se fond avec elle et l'allonge (ce qu'on appelle l'augment temporel)."},
+    {type:'table', caption:"Imparfait de λύω et de εἰμί", headers:['Personne','λύω → je déliais','εἰμί → j\'étais'],
+     rows:[['1sg','ἔλυον','ἦν'],['2sg','ἔλυες','ἦσθα'],['3sg','ἔλυε(ν)','ἦν'],['1pl','ἐλύομεν','ἦμεν'],['2pl','ἐλύετε','ἦτε'],['3pl','ἔλυον','ἦσαν']]},
+    {type:'callout', kind:'info', text:"Astuce : à la 1ère et à la 3e personne du singulier, l'imparfait actif de λύω se ressemble (ἔλυον) — seul le contexte ou le sujet exprimé permet de trancher, exactement comme en français « je parlais » / « il parlait » ne se confondent pas mais où bien d'autres formes, elles, sont ambiguës."},
+    {type:'example', items:[
+      {gr:'ὁ ἄνθρωπος ἔγραφεν', tr:'ho ánthrōpos égraphen', fr:"l'homme écrivait"}
+    ]}
+  ],
+  vocab:[],
+  exercises:[
+    {type:'qcm', q:"L'imparfait, contrairement au présent, exprime en priorité…", opts:['une action future','une action passée, dans sa durée','un ordre','une supposition'], correct:1, explain:"L'imparfait situe l'action dans le passé, envisagée dans son déroulement."},
+    {type:'qcm', q:"L'augment ἐ- se place…", opts:["à la fin du verbe","devant le thème du verbe","seulement au pluriel","seulement à l'aoriste"], correct:1, explain:"L'augment se place devant le thème verbal, marque du passé (imparfait et aoriste)."},
+    {type:'qcm', q:'« Tu déliais » se dit…', opts:['ἔλυον','ἔλυες','ἔλυε','ἐλύετε'], correct:1, explain:"ἔλυες = tu déliais (2e pers. sg.)."},
+    {type:'qcm', q:"« Nous étions » (imparfait de εἰμί) se dit…", opts:['ἐσμέν','ἦμεν','ἦσαν','ἐστέ'], correct:1, explain:"ἦμεν = nous étions."},
+    {type:'text', q:"Écris l'imparfait 3e pers. pl. de λύω (« ils déliaient »).", accepted:['ἔλυον','ελυον'], explain:"ἔλυον sert à la fois de 1ère personne du singulier et de 3e personne du pluriel."}
+  ]
+},
+{
+  title:"Le futur et l'aoriste", grTitle:"Ὁ μέλλων καὶ ὁ ἀόριστος",
+  blocks:[
+    {type:'p', text:"Le futur (« je délierai ») se forme en ajoutant un suffixe -σ- au radical, suivi des désinences actives déjà connues. L'aoriste (« je déliai », le passé « simple » du grec, qui présente l'action comme un fait ponctuel et global) combine l'augment du passé avec ce même suffixe -σ-, et des désinences propres."},
+    {type:'table', caption:"Futur et aoriste actifs de λύω", headers:['Personne','Futur : je délierai','Aoriste : je déliai'],
+     rows:[['1sg','λύσω','ἔλυσα'],['2sg','λύσεις','ἔλυσας'],['3sg','λύσει','ἔλυσε(ν)'],['1pl','λύσομεν','ἐλύσαμεν'],['2pl','λύσετε','ἐλύσατε'],['3pl','λύσουσι(ν)','ἔλυσαν']]},
+    {type:'rule', text:"Repère les signaux : le <b>futur</b> ajoute -σ- sans augment (λύ<b>σ</b>ω) ; l'<b>aoriste</b> combine l'augment ἐ- ET le -σ- (<b>ἐ</b>λύ<b>σ</b>α), avec des désinences différentes de l'imparfait (-α, -ας, -ε, -αμεν, -ατε, -αν)."},
+    {type:'callout', kind:'warn', text:"Devant les consonnes finales du radical, le -σ- se combine parfois : γράφω (radical γραφ-) donne au futur γράψω et à l'aoriste ἔγραψα (φ + σ → ψ). C'est un simple ajustement phonétique, pas une exception à apprendre par cœur mot à mot."}
+  ],
+  vocab:[],
+  exercises:[
+    {type:'qcm', q:"Le futur de λύω se forme en ajoutant au radical…", opts:['un augment','le suffixe -σ-','le suffixe -θη-','rien de particulier'], correct:1, explain:"Le suffixe sigmatique -σ- caractérise le futur (et l'aoriste sigmatique)."},
+    {type:'qcm', q:"Ce qui distingue l'aoriste du futur, c'est…", opts:["l'aoriste n'a pas de -σ-","l'aoriste porte en plus l'augment","le futur porte l'augment, pas l'aoriste","aucune différence"], correct:1, explain:"L'aoriste = augment + -σ- + désinences propres ; le futur n'a pas d'augment."},
+    {type:'qcm', q:'« Il déliera » (futur) se dit…', opts:['λύει','λύσει','ἔλυσε','ἔλυε'], correct:1, explain:"λύσει = il/elle déliera."},
+    {type:'text', q:"Écris l'aoriste 1ère pers. sg. de λύω (« je déliai »).", accepted:['ἔλυσα','ελυσα'], explain:"ἔλυσα, augment ἐ- + radical λυ- + suffixe -σ- + désinence -α."},
+    {type:'qcm', q:"γράφω (j'écris) donne à l'aoriste, après ajustement phonétique…", opts:['ἔγραφσα','ἔγραψα','ἔγραβσα','ἐγράφησα'], correct:1, explain:"φ + σ se combinent en ψ : ἔγραψα."}
+  ]
+},
+{
+  title:"L'ordre des mots et les particules", grTitle:"Ἡ τάξις τῶν λέξεων",
+  blocks:[
+    {type:'p', text:"Parce que le cas indique la fonction grammaticale (et non la place dans la phrase), l'ordre des mots est beaucoup plus libre en grec qu'en français : sujet, verbe et compléments peuvent presque se permuter sans changer le sens strict, seule l'emphase change. En prose classique, le verbe se trouve toutefois très souvent en fin de proposition."},
+    {type:'rule', text:"Certains petits mots très fréquents, appelés <b>particules</b>, ne peuvent jamais ouvrir une phrase : on dit qu'ils sont <b>postpositifs</b>. C'est le cas de δέ (« mais, or, et »), γάρ (« car, en effet »), οὖν (« donc ») et μέν (annonce souvent un δέ à venir). Ils se placent en général juste après le premier mot de la proposition."},
+    {type:'example', items:[
+      {gr:'ὁ μὲν λόγος καλός, ὁ δὲ βίος αἰσχρός', tr:'ho mèn lógos kalós, ho dè bíos aiskhrós', fr:"le discours, lui, est beau, mais la vie est honteuse (structure « μέν... δέ... » = « d'un côté... de l'autre »)"}
+    ]},
+    {type:'callout', kind:'info', text:"Repérer μέν... δέ... est l'un des réflexes les plus utiles en grec : c'est la charpente de très nombreuses phrases d'opposition ou d'énumération, même quand la traduction française n'a besoin d'aucun mot pour le premier terme."}
+  ],
+  vocab:[
+    {gr:"δέ", tr:"dé", fr:"mais, or, et (postpositif)"},
+    {gr:"γάρ", tr:"gár", fr:"car, en effet (postpositif)"},
+    {gr:"μέν ... δέ ...", tr:"mén ... dé ...", fr:"d'un côté ... de l'autre ..."},
+    {gr:"οὖν", tr:"oûn", fr:"donc (postpositif)"},
+    {gr:"ἀλλά", tr:"allá", fr:"mais (en tête de phrase)"}
+  ],
+  exercises:[
+    {type:'qcm', q:"Un mot « postpositif » comme δέ ou γάρ…", opts:['ouvre toujours la phrase','ne peut jamais ouvrir la phrase','se place seulement à la fin','ne se rencontre qu\'en poésie'], correct:1, explain:"Les postpositifs comme δέ, γάρ, οὖν se placent après le premier mot de la proposition, jamais en tête."},
+    {type:'qcm', q:"La construction μέν... δέ... sert à exprimer…", opts:['une question','une opposition ou une double énumération','une négation','un ordre'], correct:1, explain:"μέν annonce un premier terme, δέ introduit le second, en opposition ou en parallèle."},
+    {type:'qcm', q:"Contrairement au français, l'ordre des mots grec est plus libre parce que…", opts:["le grec n'a pas de verbe","les cas indiquent déjà la fonction des mots","il n'y a pas d'article en grec","le grec n'a pas de sujet"], correct:1, explain:"Le marquage casuel (nominatif, accusatif...) rend l'ordre des mots secondaire pour comprendre la fonction de chacun."},
+    {type:'qcm', q:"« Car, en effet » se dit…", opts:['δέ','γάρ','οὖν','ἀλλά'], correct:1, explain:"γάρ introduit une explication ou une justification."},
+    {type:'text', q:"Contrairement à γάρ et δέ, quel mot de la liste ci-dessus peut ouvrir une phrase (« mais ») ?", accepted:['ἀλλά','αλλα'], explain:"ἀλλά, contrairement aux particules postpositives, peut se placer en tête de phrase."}
+  ]
+},
+{
+  title:"Citations célèbres", grTitle:"Γνῶμαι",
+  blocks:[
+    {type:'p', text:"Rien de tel que des formules célèbres, transmises depuis plus de 2000 ans, pour terminer ce premier parcours et se donner envie d'aller plus loin. En voici cinq, à lire — et à écouter — à voix haute."},
+    {type:'example', items:[
+      {gr:'γνῶθι σεαυτόν', tr:'gnỗthi seautón', fr:"« Connais-toi toi-même » — maxime gravée au temple de Delphes"},
+      {gr:'μηδὲν ἄγαν', tr:'mēdèn ágan', fr:"« Rien de trop » — autre maxime delphique, invitant à la mesure"},
+      {gr:'ἓν οἶδα ὅτι οὐδὲν οἶδα', tr:'hèn oîda hóti oudèn oîda', fr:"« Je sais une chose : que je ne sais rien » — attribué à Socrate"},
+      {gr:'πάντα ῥεῖ', tr:'pánta rheî', fr:"« Tout coule », rien n'est stable — résumé traditionnel de la pensée d'Héraclite"},
+      {gr:'ὁ βίος βραχύς, ἡ δὲ τέχνη μακρή', tr:'ho bíos brakhús, hē dè tékhnē makrḗ', fr:"« La vie est brève, l'art (la médecine) est long » — incipit des Aphorismes d'Hippocrate"}
+    ]},
+    {type:'callout', kind:'info', text:"Remarque la construction μέν... δέ... implicite dans la dernière phrase d'Hippocrate : « ὁ βίος βραχύς » pose le premier terme, « ἡ δὲ τέχνη μακρή » (introduit par δέ) lui répond en écho — exactement le réflexe vu à la leçon précédente."}
+  ],
+  vocab:[
+    {gr:"γνῶθι σεαυτόν", tr:"gnỗthi seautón", fr:"connais-toi toi-même"},
+    {gr:"μηδὲν ἄγαν", tr:"mēdèn ágan", fr:"rien de trop"},
+    {gr:"οἶδα", tr:"oîda", fr:"je sais"},
+    {gr:"ῥεῖ", tr:"rheî", fr:"coule (de ῥέω, couler)"},
+    {gr:"βραχύς", tr:"brakhús", fr:"court, bref"},
+    {gr:"μακρός / μακρή", tr:"makrós / makrḗ", fr:"long, longue"}
+  ],
+  exercises:[
+    {type:'qcm', q:'« Connais-toi toi-même » se dit…', opts:['μηδὲν ἄγαν','γνῶθι σεαυτόν','πάντα ῥεῖ','ὁ βίος βραχύς'], correct:1, explain:"γνῶθι σεαυτόν, maxime gravée au temple de Delphes."},
+    {type:'qcm', q:'« Tout coule » (Héraclite) se dit…', opts:['πάντα ῥεῖ','ἓν οἶδα','μηδὲν ἄγαν','ὁ βίος βραχύς'], correct:0, explain:"πάντα ῥεῖ résume la pensée d'Héraclite sur le changement perpétuel."},
+    {type:'qcm', q:"La phrase attribuée à Socrate signifie…", opts:["je sais tout","je ne sais rien du tout, sans conditions","je sais une chose : que je ne sais rien","je ne veux rien savoir"], correct:2, explain:"ἓν οἶδα ὅτι οὐδὲν οἶδα : « je sais une chose, c'est que je ne sais rien » — une position philosophique, pas un simple aveu d'ignorance."},
+    {type:'qcm', q:"Dans les Aphorismes d'Hippocrate, τέχνη (ici traduit par « l'art ») désigne surtout…", opts:['la peinture','la médecine, l\'art médical','la guerre','la poésie'], correct:1, explain:"Dans ce contexte, τέχνη renvoie à l'art médical qu'Hippocrate professe."},
+    {type:'text', q:"Traduis en un mot : « μηδὲν ἄγαν » conseille de ne rien faire…", accepted:['trop','de trop','en excès'], explain:"μηδὲν ἄγαν = « rien de trop », invitation à la mesure."}
+  ]
+}
+];
+
+/* =========================================================================
+   ÉTAT
+   ========================================================================= */
+const STATE = {
+  lesson: 0,
+  tab: 'cours',
+  points: 0,
+  streak: 0,
+  completed: new Set(),
+  exIndex: {},   // lessonIndex -> question index en cours
+  exScore: {},   // lessonIndex -> {correct, total, done:bool}
+  exAnswered: false,
+  gasUrl: '',
+  user: null,    // {name, code} une fois connecté
+  guest: false   // mode invité : pas de sauvegarde
+};
+
+/* =========================================================================
+   SYNTHÈSE VOCALE
+   ========================================================================= */
+let GR_VOICE = null;
+function loadGrVoice(){
+  try{
+    const voices = window.speechSynthesis.getVoices();
+    GR_VOICE = voices.find(v=>v.lang && v.lang.toLowerCase().startsWith('el')) || null;
+  }catch(e){}
+}
+if(typeof window!=='undefined' && 'speechSynthesis' in window){
+  loadGrVoice();
+  window.speechSynthesis.onvoiceschanged = loadGrVoice;
+}
+function speakGr(text, btn){
+  try{
+    if(!('speechSynthesis' in window)){ showToast("La synthèse vocale n'est pas disponible sur ce navigateur."); return; }
+    window.speechSynthesis.cancel();
+    const clean = (text||'').replace(/\s+/g,' ').trim();
+    if(!clean) return;
+    const u = new SpeechSynthesisUtterance(clean);
+    u.lang = 'el-GR';
+    u.rate = 0.82;
+    if(GR_VOICE) u.voice = GR_VOICE;
+    if(btn){ btn.classList.add('playing'); u.onend=()=>btn.classList.remove('playing'); u.onerror=()=>btn.classList.remove('playing'); }
+    window.speechSynthesis.speak(u);
+  }catch(e){ console.error(e); }
+}
+window.speakGr = speakGr;
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(()=>t.classList.remove('show'), 2600);
+}
+
+/* =========================================================================
+   SAUVEGARDE — GOOGLE APPS SCRIPT
+   ========================================================================= */
+async function gasCall(action, payload){
+  if(!STATE.gasUrl) return {ok:false, error:'Aucune URL de sauvegarde configurée.'};
+  try{
+    const res = await fetch(STATE.gasUrl, {method:'POST', body: JSON.stringify(Object.assign({action}, payload||{}))});
+    return await res.json();
+  }catch(e){ return {ok:false, error:'Connexion au serveur impossible : '+e}; }
+}
+
+async function saveProgress(){
+  if(!STATE.user) return; // invité : rien à sauvegarder
+  await gasCall('save', {
+    name: STATE.user.name,
+    code: STATE.user.code,
+    points: STATE.points,
+    completedLessons: [...STATE.completed]
+  });
+}
+window.saveProgress = saveProgress;
+
+function settingsScreenHTML(err){
+  return `<div class="authscreen"><div class="authcard">
+    <div class="mark2">⚙</div>
+    <h2>Configurer la sauvegarde</h2>
+    <div class="sub">Colle ici l'URL de ton application Google Apps Script (voir les instructions de déploiement fournies avec ce fichier).</div>
+    <label>URL de l'application web</label>
+    <input type="text" id="gasUrlInput" placeholder="https://script.google.com/macros/s/…/exec">
+    <button class="btn-ghost" style="width:100%;margin-top:10px;" onclick="testGasConnection()">Tester la connexion</button>
+    <div class="errmsg" id="gasMsg"></div>
+    <button class="navbtn" onclick="saveGasUrl()">Enregistrer</button>
+    <button class="altlink" onclick="continueAsGuest()">Continuer sans sauvegarde (mode invité)</button>
+    <div class="errmsg">${err||''}</div>
+  </div></div>`;
+}
+function loginScreenHTML(prefillName, err){
+  return `<div class="authscreen"><div class="authcard">
+    <div class="mark2">Ω</div>
+    <h2>Bienvenue</h2>
+    <div class="sub">Entre ton prénom et un code personnel. Le compte se crée automatiquement la première fois — retiens bien ton code, il te permettra de retrouver ta progression.</div>
+    <label>Prénom</label>
+    <input type="text" id="loginName" value="${prefillName?esc(prefillName):''}" placeholder="ex : Léa">
+    <label>Code personnel</label>
+    <input type="password" id="loginCode" placeholder="ex : 1234">
+    <button class="navbtn" onclick="submitLogin()">Se connecter</button>
+    <button class="altlink" onclick="continueAsGuest()">Continuer sans compte (invité)</button>
+    <button class="altlink" onclick="renderScreen(settingsScreenHTML())">⚙ Changer l'URL de sauvegarde</button>
+    <div class="errmsg">${err||''}</div>
+  </div></div>`;
+}
+function renderScreen(html){
+  let ov = document.getElementById('authOverlay');
+  if(!ov){ ov = document.createElement('div'); ov.id='authOverlay'; document.body.appendChild(ov); }
+  ov.innerHTML = html;
+}
+function removeAuthOverlay(){
+  const ov = document.getElementById('authOverlay');
+  if(ov) ov.remove();
+}
+function saveGasUrl(){
+  const val = (document.getElementById('gasUrlInput').value||'').trim();
+  if(!val){ renderScreen(settingsScreenHTML("Merci de coller une URL.")); return; }
+  localStorage.setItem('grec_gas_url', val);
+  STATE.gasUrl = val;
+  renderScreen(loginScreenHTML());
+}
+async function testGasConnection(){
+  const input = document.getElementById('gasUrlInput');
+  const url = (input.value||'').trim();
+  const msg = document.getElementById('gasMsg');
+  if(!url){ msg.style.color='var(--red)'; msg.textContent='Colle une URL avant de tester.'; return; }
+  msg.style.color='var(--text-soft)'; msg.textContent='Test en cours…';
+  try{
+    const res = await fetch(url, {method:'POST', body: JSON.stringify({action:'ping'})});
+    const r = await res.json();
+    if(r && r.ok){ msg.style.color='var(--green)'; msg.textContent='Connexion réussie ✓ — le script répond correctement.'; }
+    else{ msg.style.color='var(--red)'; msg.textContent="Le script répond mais renvoie une erreur : "+((r&&r.error)||'inconnue')+"."; }
+  }catch(e){ msg.style.color='var(--red)'; msg.textContent="Connexion impossible. Vérifie l'URL et le déploiement (accès = Tout le monde)."; }
+}
+window.testGasConnection = testGasConnection;
+function continueAsGuest(){
+  STATE.guest = true;
+  STATE.user = null;
+  removeAuthOverlay();
+  render();
+}
+async function submitLogin(){
+  const name = (document.getElementById('loginName').value||'').trim();
+  const code = (document.getElementById('loginCode').value||'').trim();
+  if(!name || !code){ renderScreen(loginScreenHTML(name,'Prénom et code requis.')); return; }
+  renderScreen(loginScreenHTML(name,'Connexion…'));
+  const r = await gasCall('login', {name, code});
+  if(!r || !r.ok){ renderScreen(loginScreenHTML(name, (r&&r.error)||'Connexion impossible.')); return; }
+  applyLogin(name, code, r);
+}
+function applyLogin(name, code, r){
+  STATE.user = {name, code};
+  STATE.guest = false;
+  STATE.points = r.points||0;
+  STATE.completed = new Set((r.completedLessons||[]).map(Number));
+  localStorage.setItem('grec_user_name', name);
+  localStorage.setItem('grec_user_code', code);
+  removeAuthOverlay();
+  render();
+  showToast(r.isNew ? 'Compte créé — bienvenue !' : 'Progression restaurée.');
+}
+function logout(){
+  localStorage.removeItem('grec_user_name');
+  localStorage.removeItem('grec_user_code');
+  STATE.user = null; STATE.guest = false;
+  STATE.points = 0; STATE.streak = 0; STATE.completed = new Set();
+  STATE.lesson = 0; STATE.tab = 'cours';
+  renderScreen(loginScreenHTML());
+}
+window.saveGasUrl = saveGasUrl;
+window.continueAsGuest = continueAsGuest;
+window.submitLogin = submitLogin;
+window.logout = logout;
+
+function withTimeout_(promise, ms, timeoutMsg){
+  return Promise.race([
+    promise,
+    new Promise(resolve => setTimeout(() => resolve({ ok:false, error: timeoutMsg || 'Délai dépassé.' }), ms))
+  ]);
+}
+
+async function boot(){
+  const url = localStorage.getItem('grec_gas_url')||'';
+  STATE.gasUrl = url;
+  render(); // l'appli est utilisable tout de suite, la connexion se fait en arrière-plan
+  if(!url){ renderScreen(settingsScreenHTML()); return; }
+  const savedName = localStorage.getItem('grec_user_name');
+  const savedCode = localStorage.getItem('grec_user_code');
+  if(!savedName || !savedCode){ renderScreen(loginScreenHTML()); return; }
+
+  STATE.guest = true; // en attendant la réponse, on n'est pas bloqué
+  showToast('Connexion en cours…');
+  const r = await withTimeout_(
+    gasCall('login', {name:savedName, code:savedCode}),
+    10000,
+    'La connexion prend trop de temps — tu peux continuer, ta progression se sauvegardera dès que le serveur répondra.'
+  );
+  if(r && r.ok){
+    STATE.user = {name:savedName, code:savedCode};
+    STATE.guest = false;
+    STATE.points += (r.points||0);
+    (r.completedLessons||[]).forEach(n => STATE.completed.add(Number(n)));
+    refreshTopStats(); renderSidebar();
+    showToast(r.isNew ? 'Compte créé — bienvenue !' : 'Progression restaurée.');
+  } else {
+    showToast((r&&r.error) || 'Connexion impossible pour le moment — mode invité.');
+  }
+}
+
+/* =========================================================================
+   RENDU : BLOCS DE COURS
+   ========================================================================= */
+function esc(s){ return (s+'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function grSpan(text){ return `<span class="gr" onclick="speakGr('${esc(text).replace(/'/g,"&#39;")}', this)">${text}</span>`; }
+
+function renderBlocks(blocks){
+  return blocks.map(b=>{
+    if(b.type==='p') return `<p>${b.text}</p>`;
+    if(b.type==='rule') return `<div class="rule">${b.text}</div>`;
+    if(b.type==='callout'){
+      const ico = b.kind==='warn' ? '⚠️' : '💡';
+      return `<div class="callout ${b.kind}"><span class="ico">${ico}</span><span>${b.text}</span></div>`;
+    }
+    if(b.type==='example'){
+      return b.items.map(it=>`<div class="example">${grSpan(it.gr)}<span class="tr">${it.tr}</span><span class="fr">${it.fr}</span></div>`).join('');
+    }
+    if(b.type==='table'){
+      const gc = b.greekCols || [];
+      const thead = '<tr>'+b.headers.map(h=>`<th>${h}</th>`).join('')+'</tr>';
+      const tbody = b.rows.map(r=>'<tr>'+r.map((c,i)=> gc.includes(i) ? `<td>${grSpan(c)}</td>` : `<td>${c}</td>`).join('')+'</tr>').join('');
+      const cap = b.caption ? `<caption>${b.caption}</caption>` : '';
+      return `<div class="tblwrap"><table class="gridtbl">${cap}${thead}${tbody}</table></div>`;
+    }
+    return '';
+  }).join('');
+}
+
+function renderVocab(vocab){
+  return `<div class="vocab-grid">` + vocab.map(v=>`
+    <div class="vcard">
+      <div class="front">
+        ${grSpan(v.gr)}
+        <span class="tr">${v.tr}</span>
+      </div>
+      <div class="back">${v.fr}</div>
+    </div>`).join('') + `</div>`;
+}
+
+/* =========================================================================
+   RENDU : EXERCICES
+   ========================================================================= */
+function startExercises(li){
+  STATE.exIndex[li] = 0;
+  STATE.exAnswered = false;
+  if(!STATE.exScore[li]) STATE.exScore[li] = {correct:0, total:0, done:false};
+  STATE.exScore[li] = {correct:0, total:0, done:false};
+  render();
+}
+window.startExercises = startExercises;
+
+function renderExerciseView(li){
+  const lesson = LESSONS[li];
+  const exs = lesson.exercises;
+  const qi = STATE.exIndex[li];
+
+  if(qi === undefined){
+    return `<div class="card">
+      <h3><span class="en">Entraînement</span>Exercices</h3>
+      <p>${exs.length} questions pour vérifier ce que tu as retenu de ce cours : choix multiples et réponses à écrire, avec le clavier grec de ton clavier habituel (copie-colle si besoin depuis le cours).</p>
+      <button class="navbtn" onclick="startExercises(${li})">▶ Commencer les exercices</button>
+    </div>`;
+  }
+
+  if(qi >= exs.length){
+    const sc = STATE.exScore[li];
+    const pct = Math.round(100*sc.correct/sc.total);
+    let badge = '';
+    if(pct>=70 && !STATE.completed.has(li)){
+      STATE.completed.add(li);
+      badge = `<div class="badge">🏅 Leçon validée !</div>`;
+      saveProgress();
+    }
+    return `<div class="card">
+      <div class="resultbox">
+        <div class="ui" style="font-size:12px;color:var(--gold-dim);letter-spacing:.1em;text-transform:uppercase;">Résultat</div>
+        <div class="score">${sc.correct} / ${sc.total}</div>
+        <p class="ui" style="color:var(--text-soft);">${pct}% de bonnes réponses — tu as gagné ${sc.correct*10} points.</p>
+        ${badge}
+        <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;">
+          <button class="btn-ghost" onclick="startExercises(${li})">↻ Refaire</button>
+          ${li < LESSONS.length-1 ? `<button class="navbtn" onclick="STATE.lesson=${li+1};STATE.tab='cours';render()">Leçon suivante →</button>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }
+
+  const ex = exs[qi];
+  const pct = Math.round(100*qi/exs.length);
+  let body = '';
+  if(ex.type==='qcm'){
+    body = `<div class="optiongrid">` + ex.opts.map((o,i)=>
+      `<button class="optbtn" id="opt${i}" onclick="answerQcm(${li},${i})">${o}</button>`
+    ).join('') + `</div>`;
+  } else {
+    body = `<div class="answerrow">
+      <input type="text" id="textAnswer" placeholder="Écris ta réponse ici…" onkeydown="if(event.key==='Enter')answerText(${li})">
+      <button class="navbtn" onclick="answerText(${li})">Valider</button>
+    </div>`;
+  }
+
+  return `<div class="card">
+    <div class="progressbar"><div style="width:${pct}%;"></div></div>
+    <div class="qmeta">Question ${qi+1} / ${exs.length} · ${STATE.points} pts · série en cours : ${STATE.streak}</div>
+    <div class="qbox" style="margin-top:10px;box-shadow:none;border:none;padding:18px 0 0;">
+      <div class="qprompt"><span class="fr">${ex.q}</span></div>
+      ${body}
+      <div class="explain" id="explainBox"></div>
+      <div class="qfoot">
+        <span></span>
+        <button class="navbtn" id="nextBtn" style="display:none;" onclick="nextExercise(${li})">Suivant →</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function lockOptions(){
+  document.querySelectorAll('.optbtn').forEach(b=>b.disabled=true);
+}
+function showExplain(text, correct){
+  const box = document.getElementById('explainBox');
+  box.innerHTML = (correct?'✅ ':'❌ ') + text;
+  box.classList.add('show');
+  document.getElementById('nextBtn').style.display='inline-flex';
+}
+function registerAnswer(li, correct){
+  if(STATE.exAnswered) return false;
+  STATE.exAnswered = true;
+  STATE.exScore[li].total++;
+  if(correct){ STATE.exScore[li].correct++; STATE.points+=10; STATE.streak++; }
+  else{ STATE.streak=0; }
+  refreshTopStats();
+  saveProgress();
+  return true;
+}
+function answerQcm(li, idx){
+  if(STATE.exAnswered) return;
+  const ex = LESSONS[li].exercises[STATE.exIndex[li]];
+  const correct = idx===ex.correct;
+  if(!registerAnswer(li, correct)) return;
+  lockOptions();
+  document.getElementById('opt'+ex.correct).classList.add('correct');
+  if(!correct) document.getElementById('opt'+idx).classList.add('wrong');
+  showExplain(ex.explain||'', correct);
+}
+function answerText(li){
+  if(STATE.exAnswered) return;
+  const ex = LESSONS[li].exercises[STATE.exIndex[li]];
+  const input = document.getElementById('textAnswer');
+  const val = (input.value||'').trim().toLowerCase();
+  const correct = ex.accepted.some(a=>a.toLowerCase()===val);
+  if(!registerAnswer(li, correct)) return;
+  input.disabled = true;
+  showExplain(ex.explain||'', correct);
+}
+window.answerQcm = answerQcm;
+window.answerText = answerText;
+function nextExercise(li){
+  STATE.exIndex[li]++;
+  STATE.exAnswered = false;
+  render();
+}
+window.nextExercise = nextExercise;
+
+/* =========================================================================
+   NAVIGATION / RENDU GÉNÉRAL
+   ========================================================================= */
+function refreshTopStats(){
+  const p = document.getElementById('statPoints');
+  const s = document.getElementById('statStreak');
+  const c = document.getElementById('statDone');
+  if(p) p.textContent = STATE.points;
+  if(s) s.textContent = STATE.streak;
+  if(c) c.textContent = STATE.completed.size + '/' + LESSONS.length;
+}
+
+function renderSidebar(){
+  const items = LESSONS.map((l,i)=>{
+    const ord = ['Α΄','Β΄','Γ΄','Δ΄','Ε΄','Ϛ΄','Ζ΄','Η΄','Θ΄','Ι΄','ΙΑ΄','ΙΒ΄'][i] || (i+1);
+    const cls = 'navitem' + (i===STATE.lesson?' active':'') + (STATE.completed.has(i)?' done':'');
+    return `<div class="${cls}" onclick="STATE.lesson=${i};STATE.tab='cours';render()">
+      <span class="num">${ord}</span><span>${l.title}</span>
+    </div>`;
+  }).join('');
+  const userRow = STATE.user
+    ? `<div class="userbadge"><span>👤 ${esc(STATE.user.name)}</span><button onclick="logout()">changer</button></div>`
+    : `<div class="userbadge"><span>👤 Invité (non sauvegardé)</span><button onclick="renderScreen(loginScreenHTML())">se connecter</button></div>`;
+  document.getElementById('sidebar').innerHTML = `
+    <div class="brand">
+      <div class="mark">Ω</div>
+      <div><div class="name">Grec Ancien</div><div class="sub">μάθε παίζων — apprends en jouant</div></div>
+    </div>
+    ${userRow}
+    <div class="statbar">
+      <div class="statchip"><b id="statPoints">${STATE.points}</b>points</div>
+      <div class="statchip"><b id="statStreak">${STATE.streak}</b>série</div>
+      <div class="statchip"><b id="statDone">${STATE.completed.size}/${LESSONS.length}</b>leçons</div>
+    </div>
+    <div class="navgroup">
+      <div class="label">Parcours</div>
+      ${items}
+    </div>`;
+}
+
+function renderMain(){
+  const li = STATE.lesson;
+  const lesson = LESSONS[li];
+  const tabs = ['cours','vocabulaire','exercices'];
+  const tabLabels = {cours:'Cours', vocabulaire:'Vocabulaire', exercices:'Exercices'};
+  const tabbar = tabs.map(t=>`<button class="tabbtn${STATE.tab===t?' active':''}" onclick="STATE.tab='${t}';render()">${tabLabels[t]}</button>`).join('');
+
+  let content = '';
+  if(STATE.tab==='cours'){
+    content = `<div class="card">${renderBlocks(lesson.blocks)}</div>`;
+  } else if(STATE.tab==='vocabulaire'){
+    content = lesson.vocab.length
+      ? `<div class="card"><h3><span class="en">Mots à retenir</span>Vocabulaire de la leçon</h3>${renderVocab(lesson.vocab)}</div>`
+      : `<div class="card"><h3><span class="en">Mots à retenir</span>Vocabulaire de la leçon</h3><p>Pas de nouveau vocabulaire ici : cette leçon est centrée sur la grammaire. Profites-en pour réviser les mots des leçons précédentes.</p></div>`;
+  } else {
+    content = renderExerciseView(li);
+  }
+
+  document.getElementById('main').innerHTML = `
+    <div class="topline">
+      <div>
+        <div class="eyebrow">Leçon ${li+1} / ${LESSONS.length}</div>
+        <h1>${lesson.title}</h1>
+        <div class="grtitle">${lesson.grTitle}</div>
+      </div>
+    </div>
+    <div class="tabbar">${tabbar}</div>
+    ${content}
+    <div class="lesson-nav">
+      <button class="btn-ghost" ${li===0?'disabled':''} onclick="STATE.lesson=${li-1};STATE.tab='cours';render()">← Leçon précédente</button>
+      <button class="btn-ghost" ${li===LESSONS.length-1?'disabled':''} onclick="STATE.lesson=${li+1};STATE.tab='cours';render()">Leçon suivante →</button>
+    </div>`;
+}
+
+function render(){
+  renderSidebar();
+  renderMain();
+}
+
+/* INIT */
+boot();
+</script>
+</body>
+</html>
