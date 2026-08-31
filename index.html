@@ -1032,14 +1032,26 @@ async function gasCall(action, payload){
   }catch(e){ return {ok:false, error:'Connexion au serveur impossible : '+e}; }
 }
 
-async function saveProgress(){
+async function saveProgress(retriesLeft){
   if(!STATE.user) return; // invité : rien à sauvegarder
-  await gasCall('save', {
+  if(retriesLeft === undefined) retriesLeft = 3;
+  // On envoie toujours l'état complet (points, leçons validées), jamais une
+  // simple différence : si cette tentative échoue, la prochaine sauvegarde
+  // réussie (celle-ci en réessai, ou la suivante déclenchée par une future
+  // action) enverra de toute façon la version à jour. Rien n'est donc perdu
+  // tant qu'au moins une sauvegarde finit par passer avant la fermeture de
+  // l'onglet.
+  const r = await gasCall('save', {
     name: STATE.user.name,
     code: STATE.user.code,
     points: STATE.points,
     completedLessons: [...STATE.completed]
   });
+  if((!r || !r.ok) && retriesLeft > 0){
+    setTimeout(()=>saveProgress(retriesLeft-1), 4000);
+  } else if(!r || !r.ok){
+    showToast("Sauvegarde momentanément indisponible (coupure Google ?) — ta progression restera à jour dès que la connexion reviendra.");
+  }
 }
 window.saveProgress = saveProgress;
 
